@@ -7,6 +7,16 @@ import './tools/index'
 import './assets/css/reset.css'
 import './assets/font/iconfont.css'
 import  plugin from './plugin/index'
+import { ImagePreview } from 'vant';
+
+// 全局注册
+Vue.use(ImagePreview);
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+
+// require styles
+import 'swiper/dist/css/swiper.css'
+
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
 Vue.use(plugin)
 Vue.config.productionTip = false

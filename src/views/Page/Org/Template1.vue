@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <div class="warpper">
     <div class="org-logo">
       <div>
@@ -47,14 +47,56 @@
       </div>
     </div>
 
-    <div class="org-project">
+    <div class="org-project" v-if="project_info.length !== 0">
       <div class="title">
         <h3>项目展示</h3>
         <p>PRESENTATION</p>
       </div>
+      <div class="org-project-list">
+        <div class="org-project-item" :class="{active:project_info.length % 2 ===1 && index === 0}" v-for="(item,index) in project_info" :key="index">
+          <img class="item-image" :src="item.xiangmu_kaizhan_img[0]"/>
+          <div class="item-title" :class="{active:project_info.length % 2 ===1 && index === 0}">{{item.entry_name}}</div>
+          <img class="item-tag" src="../../../assets/img/img_tuijian.png" v-if="item.instructions" />
+        </div>
+      </div>
     </div>
 
+    <div class="mien-project">
+      <div class="title">
+        <h3>风采展示</h3>
+        <p>ELEGANT DEMEANOR</p>
+      </div>
+      <div class="org-project-list">
+        <div class="org-project-item" :class="{active:organization.length % 2 ===1 && index === 0}" v-for="(item,index) in organization" :key="index" @click="toMienPreview(index)">
+          <img class="item-image" :src="item.img_url"/>
+          <div class="item-title" :class="{active:organization.length % 2 ===1 && index === 0}">{{item.title}}</div>
+        </div>
+      </div>
+    </div>
 
+    <div class="contact-us">
+      <div class="title">
+        <h3>联系我们</h3>
+        <p>CONTACT US</p>
+      </div>
+      <div class="item-container">
+        <img class="item-img" src="../../../assets/img/img_lianxiren1.png"/>
+        <div class="item-content">
+          <div class="item-tag">联系人：<span class="item-title">{{apply_info.contacts}}</span></div>
+          <div class="item-tag margin-top-sm">联系电话：<span class="item-title">{{apply_info.phone}}</span></div>
+        </div>
+      </div>
+      <div class="item-container">
+        <img class="item-img"  src="../../../assets/img/img_address1.png"/>
+        <div class="item-content">
+          <div class="item-tag">联系地址</div>
+          <div class="item-title margin-top-sm">{{ apply_info.secretariat_address }}</div>
+        </div>
+      </div>
+    </div>
+    <van-image-preview v-model="show" :startPosition="startPosition" :closeable="true" :images="srcList" @change="onChange">
+      <template class="title" v-slot:cover>{{previewTitle}}</template>
+    </van-image-preview>
   </div>
 </template>
 
@@ -110,7 +152,10 @@ export default {
       project_info: [],
       organization: [],
       honor: [],
-      srcList: []
+      srcList: [],
+        startPosition:0,
+        previewTitle:'',
+        show:false
     }
   },
   created() {
@@ -123,12 +168,12 @@ export default {
     async getInstitutionInfo() {
 
       let _data = await getInstitutionInfo(this.$route.query.id)
-
       this.userinfo = _data.data.userinfo
       this.apply_info = _data.data.apply_info
       this.project_info = _data.data.project_info
       this.organization = _data.data.organization
       this.honor = _data.data.honor
+
       if (this.organization.length > 0) {
         this.organization.map(item => {
           this.srcList.push(item.img_url)
@@ -140,16 +185,29 @@ export default {
 
       this.userinfo.conclusion = this.userinfo.conclusion ? this.userinfo.conclusion.split(';') : []
       this.userinfo.year = this.userinfo.year ? this.userinfo.year.split(';') : []
-    }
+    },
+      toMienPreview(index){
+        this.startPosition = index
+          this.show = true
+          console.log(this.organization[index])
+          this.previewTitle = this.organization[index].title
+//          this.toPreview(,index)
+      },
+      onChange(index) {
+          this.previewTitle = this.organization[index].title
+          this.startPosition = index;
+      },
   }
 }
 </script>
 
 <style scoped lang="scss">
+
 .warpper {
   background: #f5f5f5;
   min-height: 100vh;
   padding: 1px 0;
+
   .org-logo{
     display: flex;
     align-items: center;
@@ -166,6 +224,7 @@ export default {
         display: block;
         width: 100px;
         margin-right: 20px;
+        object-fit: scale-down;
       }
       p{
         flex: 1;
@@ -275,9 +334,163 @@ export default {
       }
     }
   }
-  .org-project{
+  .contact-us{
     padding: 40px 20px;
     background: #fff;
+    .item-container{
+      display: flex;
+      flex-direction: row;
+      height: 169px;
+      background-color: #ffffff;
+      box-shadow: 0px 3px 24px 0px  rgba(0, 0, 0, 0.11);
+      border-radius: 10px;
+      align-items: center;
+      margin-top: 24px;
+      .item-img{
+        object-fit: scale-down;
+        flex-shrink: 0;
+        margin-left: 40px;
+        margin-right: 22px;
+        width: 89px;
+        height: 89px;
+      }
+      .item-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .item-tag{
+          font-size: 24px;
+          color: #666666;
+        }
+        .item-title{
+          font-size: 30px;
+          color: #333333;
+        }
+      }
+    }
+    .title{
+      h3{
+        font-size: 38px;
+        text-align: center;
+        line-height: 50px;
+      }
+      p{
+        font-size: 20px;
+        text-align: center;
+        line-height: 40px;
+        font-weight: lighter;
+        color: #999;
+      }
+    }
+  }
+  .mien-project{
+    padding: 40px 12px;
+    background: #fff;
+    .org-project-list{
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      .org-project-item{
+        margin-left: 12px;
+        margin-right: 12px;
+        margin-top: 24px;
+        width: 336px;
+        height: 207px;
+        position: relative;
+        overflow: hidden;
+        &.active{
+          width: 700px;
+          height: 459px;
+          margin-right: 20px;
+        }
+        .item-image{
+          width: 100%;
+          height: 100%;
+          object-fit: scale-down;
+        }
+        .item-title{
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 49px;
+          line-height: 49px;
+          text-align: center;
+          background-color: #000000b3;
+          font-size: 26px;
+          color: #ffffff;
+          &.active{
+            height: 58px;
+            line-height: 58px;
+          }
+        }
+      }
+    }
+    .title{
+      h3{
+        font-size: 38px;
+        text-align: center;
+        line-height: 50px;
+      }
+      p{
+        font-size: 20px;
+        text-align: center;
+        line-height: 40px;
+        font-weight: lighter;
+        color: #999;
+      }
+    }
+  }
+  .org-project{
+    padding: 40px 12px;
+    background: #fff;
+    .org-project-list{
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      .org-project-item{
+        margin-left: 12px;
+        margin-right: 12px;
+        margin-top: 24px;
+        width: 336px;
+        height: 207px;
+        position: relative;
+        overflow: hidden;
+        &.active{
+          width: 700px;
+          height: 459px;
+          margin-right: 20px;
+        }
+        .item-image{
+          width: 100%;
+          height: 100%;
+          object-fit: scale-down;
+        }
+        .item-tag{
+          width: 160px;
+          height: 160px;
+          position: absolute;
+          right: -36px;
+          top: -36px;
+        }
+        .item-title{
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 49px;
+          line-height: 49px;
+          text-align: center;
+          background-color: #c70005;
+          font-size: 26px;
+          color: #ffffff;
+          &.active{
+            height: 58px;
+            line-height: 58px;
+          }
+        }
+      }
+    }
     .title{
       h3{
         font-size: 38px;
