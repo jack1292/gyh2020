@@ -1,0 +1,121 @@
+{
+  "id": "1963903",
+  "name": "公益汇",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3983307",
+      "name": "菜单",
+      "font_class": "menuManager",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "1645704",
+      "name": "视频",
+      "font_class": "shipin",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "14946512",
+      "name": "开幕式",
+      "font_class": "kaimushi",
+      "unicode": "e7b9",
+      "unicode_decimal": 59321
+    },
+    {
+      "icon_id": "1777389",
+      "name": "合作",
+      "font_class": "hezuo",
+      "unicode": "e7dc",
+      "unicode_decimal": 59356
+    },
+    {
+      "icon_id": "14037202",
+      "name": "星球",
+      "font_class": "xingqiu",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "10223806",
+      "name": "审核通过 (1)",
+      "font_class": "shenhetongguo",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    },
+    {
+      "icon_id": "5562307",
+      "name": "积分",
+      "font_class": "jifen",
+      "unicode": "e6be",
+      "unicode_decimal": 59070
+    },
+    {
+      "icon_id": "14007783",
+      "name": "首页-选中",
+      "font_class": "home",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "11684214",
+      "name": "座机",
+      "font_class": "zuoji",
+      "unicode": "e6b9",
+      "unicode_decimal": 59065
+    },
+    {
+      "icon_id": "2551788",
+      "name": "选中",
+      "font_class": "xuanzhong",
+      "unicode": "e66a",
+      "unicode_decimal": 58986
+    },
+    {
+      "icon_id": "10102095",
+      "name": "放大",
+      "font_class": "fangda",
+      "unicode": "e6f2",
+      "unicode_decimal": 59122
+    },
+    {
+      "icon_id": "5133967",
+      "name": "人员",
+      "font_class": "renyuan",
+      "unicode": "e862",
+      "unicode_decimal": 59490
+    },
+    {
+      "icon_id": "7605590",
+      "name": "退出",
+      "font_class": "tuichu1",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "8735415",
+      "name": "设 置",
+      "font_class": "shezhi",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "14740237",
+      "name": "申报",
+      "font_class": "shenbao",
+      "unicode": "e6d8",
+      "unicode_decimal": 59096
+    },
+    {
+      "icon_id": "15907265",
+      "name": "微店",
+      "font_class": "weidian",
+      "unicode": "e6aa",
+      "unicode_decimal": 59050
+    }
+  ]
+}

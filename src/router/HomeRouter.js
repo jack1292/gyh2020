@@ -11,88 +11,60 @@ const HomeRouter = [
     component: () => import('../views/Page/index'),
   },
   {
-    path: 'index',
+    path: 'special',
     meta: {
       title: '2020北京公益慈善汇展-专题展',
     },
     component: () => import('../views/Page/special'),
   },
   {
-    path: 'index',
+    path: 'organization',
     meta: {
       title: '2020北京公益慈善汇展-组织展',
     },
     component: () => import('../views/Page/organization'),
   },
   {
-    path: 'index',
+    path: 'project',
     meta: {
       title: '2020北京公益慈善汇展-项目展',
     },
     component: () => import('../views/Page/project'),
   },
   {
-    path: 'index',
+    path: 'charitable',
     meta: {
       title: '2020北京公益慈善汇展-慈善展',
     },
     component: () => import('../views/Page/charitable'),
   },
   {
-    path: 'index',
+    path: 'forum',
     meta: {
       title: '2020北京公益慈善汇展-前沿论坛',
     },
     component: () => import('../views/Page/forum'),
   },
   {
-    path: 'index',
+    path: 'alleviation',
     meta: {
       title: '2020北京公益慈善汇展-消费扶贫',
     },
     component: () => import('../views/Page/alleviation'),
   },
   {
-    path: 'template1',
+    path: 'about',
     meta: {
-      title: '2020北京公益慈善汇展-机构信息',
+      title: '2020北京公益慈善汇展-关于汇展',
     },
-    component: () => import('../views/Page/Org/Template1'),
+    component: () => import('../views/Page/about'),
   },
   {
-    path: 'template2',
+    path: 'call',
     meta: {
-      title: '2020北京公益慈善汇展-机构信息',
+      title: '2020北京公益慈善汇展-联系我们',
     },
-    component: () => import('../views/Page/Org/Template2'),
-  },
-  {
-    path: 'template3',
-    meta: {
-      title: '2020北京公益慈善汇展-机构信息',
-    },
-    component: () => import('../views/Page/Org/Template3'),
-  },
-  {
-    path: 'template4',
-    meta: {
-      title: '2020北京公益慈善汇展-机构信息',
-    },
-    component: () => import('../views/Page/Org/Template4'),
-  },
-  {
-    path: 'template5',
-    meta: {
-      title: '2020北京公益慈善汇展-机构信息',
-    },
-    component: () => import('../views/Page/Org/Template5'),
-  },
-  {
-    path: 'template6',
-    meta: {
-      title: '2020北京公益慈善汇展-机构信息',
-    },
-    component: () => import('../views/Page/Org/Template6'),
+    component: () => import('../views/Page/call'),
   }
 ]
 export default HomeRouter

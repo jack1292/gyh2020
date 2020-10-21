@@ -2,22 +2,28 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import './api/index'
-import './tools/index'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import  plugin from './plugin/index'
+import { ImagePreview,Tabbar, TabbarItem,Button,Cell, CellGroup,Overlay,Step, Steps } from 'vant';
 import './assets/css/reset.css'
 import './assets/font/iconfont.css'
-import  plugin from './plugin/index'
-import { ImagePreview } from 'vant';
+import 'swiper/dist/css/swiper.css'
+import './api/index'
+import './tools/index'
+
 
 // 全局注册
+
+Vue.use(Step);
+Vue.use(Steps);
+Vue.use(Cell);
+Vue.use(CellGroup);
+Vue.use(Overlay);
 Vue.use(ImagePreview);
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-
-// require styles
-import 'swiper/dist/css/swiper.css'
-
+Vue.use(Tabbar);
+Vue.use(TabbarItem);
+Vue.use(Button);
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
-
 Vue.use(plugin)
 Vue.config.productionTip = false
 

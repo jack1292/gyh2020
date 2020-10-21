@@ -8,7 +8,7 @@
     </div>
 
     <div class="banner">
-      <img :src="organization[0].img_url" alt="">
+      <img :src="organization[0].img_url" alt="" v-if="organization.length>0">
       <div>
         <h3>机构简介</h3>
         <p>ORGANIZATION PROFILE</p>
@@ -66,7 +66,7 @@
         <h3>风采展示</h3>
         <p>ELEGANT DEMEANOR</p>
       </div>
-      <div class="org-project-list">
+      <div class="org-project-list" v-if="organization.length>0">
         <div class="org-project-item" :class="{active:organization.length % 2 ===1 && index === 0}" v-for="(item,index) in organization" :key="index" @click="toMienPreview(index)">
           <img class="item-image" :src="item.img_url"/>
           <div class="item-title" :class="{active:organization.length % 2 ===1 && index === 0}">{{item.title}}</div>

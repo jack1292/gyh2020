@@ -1,12 +1,13 @@
 <template>
-<div>专题</div>
+<div></div>
 </template>
 
 <script>
 export default {
-name: "special"
+name: "call"
 }
 </script>
 
 <style scoped lang="scss">
+
 </style>

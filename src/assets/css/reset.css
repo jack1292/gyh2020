@@ -630,3 +630,9 @@ input {
     padding-top: 50px;
     padding-bottom: 50px;
 }
+[class*=van-hairline]::after{
+    display: none;
+}
+.van-step--finish{
+    color: rgb(226, 65, 46);;
+}
