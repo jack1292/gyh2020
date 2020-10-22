@@ -31,25 +31,22 @@ service.interceptors.request.use(
 // response 拦截器
 service.interceptors.response.use(
   response => {
-    const code = response.status
-    if (code < 200 || code > 300) {
+    if(response.data.status === 200 || response.data.status === 1){
+      return response.data
+    }else if (response.data.code === 500) {
+      Dialog.alert(
+        {
+          title: '系统提示',
+          message: '登录状态已过期，请您重新登录',
+        }
+      ).then(() => {
+        store.dispatch('LogOut').then(() => {
+          location.reload() // 为了重新实例化vue-router对象 避免bug
+        })
+      })
+    }else {
       Toast.fail('response.message')
       return Promise.reject('error')
-    } else {
-      if(response.data.status === 200){
-        return response.data
-      }else if (response.data.code === 500) {
-        Dialog.alert(
-          {
-            title: '系统提示',
-            message: '登录状态已过期，请您重新登录',
-          }
-        ).then(() => {
-          store.dispatch('LogOut').then(() => {
-            location.reload() // 为了重新实例化vue-router对象 避免bug
-          })
-        })
-      }
     }
   },
   error => {

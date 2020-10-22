@@ -25,6 +25,13 @@ const HomeRouter = [
     component: () => import('../views/Page/organization'),
   },
   {
+    path: 'orgList',
+    meta: {
+      title: '2020北京公益慈善汇展-组织展',
+    },
+    component: () => import('../views/Page/orgList'),
+  },
+  {
     path: 'project',
     meta: {
       title: '2020北京公益慈善汇展-项目展',

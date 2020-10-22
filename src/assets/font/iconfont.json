@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "13719099",
+      "name": "返 回",
+      "font_class": "fanhui",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "17513686",
+      "name": "返 回",
+      "font_class": "fanhui-copy",
+      "unicode": "e7bd",
+      "unicode_decimal": 59325
+    },
+    {
       "icon_id": "3983307",
       "name": "菜单",
       "font_class": "menuManager",

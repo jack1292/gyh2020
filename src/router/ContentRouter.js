@@ -40,6 +40,81 @@ const ContentRouter = [
       title: '2020北京公益慈善汇展-机构信息',
     },
     component: () => import('../views/Page/Org/Template6'),
+  },
+  {
+    path: 'special1',
+    meta: {
+      title: '党的建设',
+    },
+    component: () => import('../views/Page/Special/special1'),
+  },
+  {
+    path: 'special2',
+    meta: {
+      title: '脱贫攻坚',
+    },
+    component: () => import('../views/Page/Special/special2'),
+  },
+  {
+    path: 'special3',
+    meta: {
+      title: '社会心理',
+    },
+    component: () => import('../views/Page/Special/special3'),
+  },
+  {
+    path: 'special4',
+    meta: {
+      title: '公益慈善与志愿服务',
+    },
+    component: () => import('../views/Page/Special/special4'),
+  },
+  {
+    path: 'special5',
+    meta: {
+      title: '防控疫情',
+    },
+    component: () => import('../views/Page/Special/special5'),
+  },
+  {
+    path: 'special6',
+    meta: {
+      title: '基层社会治理',
+    },
+    component: () => import('../views/Page/Special/special6'),
+  },
+  {
+    path: 'special7',
+    meta: {
+      title: '行业治理',
+    },
+    component: () => import('../views/Page/Special/special7'),
+  },
+  {
+    path: 'special8',
+    meta: {
+      title: '科技创新',
+    },
+    component: () => import('../views/Page/Special/special8'),
+  },
+  {
+    path: 'special9',
+    meta: {
+      title: '对外交流',
+    },
+    component: () => import('../views/Page/Special/special9'),
+  },
+  {
+    path: 'special10',
+    meta: {
+      title: '文化建设',
+    },
+    component: () => import('../views/Page/Special/special10'),
   }
+
+
+
+
+
 ]
 export default ContentRouter

@@ -42,7 +42,7 @@ export default {
 
 <style scoped lang="scss">
 .warpper{
-  padding-top: 100px;
+  padding-top: 88px;
   padding-bottom: 100px;
 }
 </style>

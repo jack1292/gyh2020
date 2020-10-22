@@ -11,3 +11,15 @@ export const getInstitutionInfo = (institution_id) => get('/home/Institutions/ge
   institution_id
 })
 
+
+/*
+* 获取组织首页列表
+* @constructor jack
+* */
+export const getOrgIndex = () => get('/api/Organization/index', {})
+
+/*
+* 获取组织分类列表
+* @constructor jack
+* */
+export const getOrgList = (page,limit,keyword,area,org_type,type) => get('/api/Organization/query', {page,limit,keyword,area,org_type,type})
