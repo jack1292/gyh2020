@@ -1,6 +1,6 @@
 
-// let baseURL = 'http://cshadmin.shzzpt.org.cn/index.php' //
-let baseURL = 'http://192.168.2.107:82' //
+let baseURL = 'http://cshadmin.shzzpt.org.cn' //
+// let baseURL = 'http://192.168.2.107:82' //
 let timeout = 10000
 let localAnStore = [
   {

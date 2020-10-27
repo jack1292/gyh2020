@@ -66,7 +66,6 @@ export default {
   methods: {
     async init() {
       let _data = await getOrgIndex()
-      console.log(_data)
       this.list = _data.data
     },
     toOrgList(){
@@ -79,7 +78,7 @@ export default {
 <style scoped lang="scss">
 .organization-warpper {
   background: #f1f1f1;
-
+  min-height: calc(100vh - 188px);
   .org-banner {
     display: block;
     width: 100%;
@@ -170,6 +169,7 @@ export default {
 
             h3 {
               font-size: 30px;
+              line-height: 36px;
               color: #333333;
               margin-bottom: 20px;
             }

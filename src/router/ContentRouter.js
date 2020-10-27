@@ -110,6 +110,27 @@ const ContentRouter = [
       title: '文化建设',
     },
     component: () => import('../views/Page/Special/special10'),
+  },
+  {
+    path: 'forumDetail',
+    meta: {
+      title: '论坛详情',
+    },
+    component: () => import('../views/Page/forumDetail'),
+  },
+  {
+    path: 'projectDetail',
+    meta: {
+      title: '项目详情',
+    },
+    component: () => import('../views/Page/projectDetail'),
+  },
+  {
+    path: 'charitableDetail',
+    meta: {
+      title: '慈善详情',
+    },
+    component: () => import('../views/Page/charitableDetail'),
   }
 
 

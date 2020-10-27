@@ -6,6 +6,90 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "11031783",
+      "name": "地址",
+      "font_class": "dizhi",
+      "unicode": "e664",
+      "unicode_decimal": 58980
+    },
+    {
+      "icon_id": "12574108",
+      "name": "邮箱",
+      "font_class": "youxiang",
+      "unicode": "e6e9",
+      "unicode_decimal": 59113
+    },
+    {
+      "icon_id": "1396199",
+      "name": "人群",
+      "font_class": "renqun",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "1487880",
+      "name": "统计",
+      "font_class": "tongji",
+      "unicode": "e693",
+      "unicode_decimal": 59027
+    },
+    {
+      "icon_id": "6610990",
+      "name": "信用",
+      "font_class": "xinyong",
+      "unicode": "e699",
+      "unicode_decimal": 59033
+    },
+    {
+      "icon_id": "9554551",
+      "name": "团队",
+      "font_class": "tuandui",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "10450558",
+      "name": "基本信息",
+      "font_class": "jibenxinxi",
+      "unicode": "e663",
+      "unicode_decimal": 58979
+    },
+    {
+      "icon_id": "10941799",
+      "name": "钻石",
+      "font_class": "zuanshi",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    },
+    {
+      "icon_id": "11221186",
+      "name": "简介",
+      "font_class": "jianjie",
+      "unicode": "e6cc",
+      "unicode_decimal": 59084
+    },
+    {
+      "icon_id": "13241094",
+      "name": "意见",
+      "font_class": "yijian",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "15773197",
+      "name": "机构",
+      "font_class": "jigou",
+      "unicode": "e674",
+      "unicode_decimal": 58996
+    },
+    {
+      "icon_id": "17335353",
+      "name": "简介",
+      "font_class": "jianjie1",
+      "unicode": "e82d",
+      "unicode_decimal": 59437
+    },
+    {
       "icon_id": "13719099",
       "name": "返 回",
       "font_class": "fanhui",
