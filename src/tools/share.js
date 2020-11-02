@@ -2,7 +2,7 @@ import {get} from '@/api/axios'
 
 var wx = require("weixin-js-sdk");
 // type  true : 发起请求 提交用户信息+加分   false: 正常转发不处理
-var share = function (title, desc, img, url, type) {
+var share = function (title, desc, img, url) {
   //微信分享
   var param = {
     h5Url: encodeURIComponent(window.location.href.split("#")[0])
@@ -33,13 +33,8 @@ var share = function (title, desc, img, url, type) {
               desc: desc, // 分享描述
               link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
               imgUrl: img, // 分享图标
-              type: "", // 分享类型,music、video或link，不填默认为link
               dataUrl: "", // 如果type是music或video，则要提供数据链接，默认为空
               success: function () {
-                if (type) {
-                  //  发起请求 提交用户信息，给当前用户添加积分
-                  console.log(123)
-                }
               }
             });
             wx.onMenuShareTimeline({
@@ -48,10 +43,7 @@ var share = function (title, desc, img, url, type) {
               link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
               imgUrl: img, // 分享图标
               success: function () {
-                if (type) {
-                  //  发起请求 提交用户信息，给当前用户添加积分
-                  console.log(123)
-                }
+
               }
             });
           }
