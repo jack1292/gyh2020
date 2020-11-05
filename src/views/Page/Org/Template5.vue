@@ -43,10 +43,10 @@
                 <div class="bannerBtn1">
                     <img src="../../../assets/img/wenziqiashang5.png" alt="">文字<br>洽商
                 </div>
-                <div class="bannerBtn1">
+                <a :href="'tel:'+apply_info.phone" class="bannerBtn1">
                     <img src="../../../assets/img/yijiantonghua5.png" alt="">一键<br>通话
-                </div>
-                <div class="bannerBtn1">
+                </a>
+                <div class="bannerBtn1" @click="toShare">
                     <img src="../../../assets/img/yijianzhuanfa5.png" alt="">一键<br>转发
                 </div>
             </div>
@@ -61,11 +61,11 @@
                     <h3>项目展示</h3>
                     <p>PROJECT PRESENTATION</p>
                 </div>
-                <div class="org-project-item" v-for="(item,index) in project_info" :key="index">
+                <router-link :to="'/Content/projectDetail?id='+item.id" class="org-project-item" v-for="(item,index) in project_info" :key="index">
                     <img class="item-image" :src="item.xiangmu_kaizhan_img[0]"/>
                     <div class="item-title ovHide">{{item.entry_name}}</div>
                     <img class="item-tag" src="../../../assets/img/img_tuijian.png" v-if="item.instructions"/>
-                </div>
+                </router-link>
             </div>
         </div>
         <div style="height: 5px;background: #f5f5f5;"></div>
@@ -118,13 +118,16 @@
                            @change="onChange">
             <template class="title" v-slot:cover>{{previewTitle}}</template>
         </van-image-preview>
+        <share :showShare="showShare" @setShare="setShare"></share>
     </div>
 </template>
 
 <script>
     import {getInstitutionInfo} from '@/api'
+    import Share from "../../Components/Share.vue";
 
     export default {
+        components: {Share},
         name: "Template5",
         data() {
             return {
@@ -198,7 +201,8 @@
                     //开启循环模式
                     loop: true,
                     on: {}
-                }
+                },
+                showShare: false
             }
         },
         created() {
@@ -243,6 +247,7 @@
                         }
                     }
                 }
+                this.swiperOption.loop = this.organization.length >2
             },
             toMienPreview(index) {
                 this.startPosition = index
@@ -255,6 +260,12 @@
                 this.previewTitle = this.organization[index].title
                 this.startPosition = index;
             },
+            toShare() {
+                this.showShare = true
+            },
+            setShare(state){
+                this.showShare = state
+            }
         },
         mounted() {
             this.$nextTick(() => {
@@ -294,7 +305,11 @@
                 img {
                     display: block;
                     width: 100px;
+                    height: 100px;
                     margin-right: 20px;
+                    border-radius: 100px;
+                    border: 1px solid #fff100;
+                    object-fit: scale-down;
                 }
                 p {
                     flex: 1;

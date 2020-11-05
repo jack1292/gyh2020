@@ -11,15 +11,17 @@
                 机构简介
             </div>
             <div class="menu">
-                <img :src="organization[0].img_url" alt="">
+                <div class="img">
+                    <img :src="organization[0].img_url" alt="">
+                </div>
                 <div class="BannerBox">
                     <div class="bannerBtn1">
                         <img src="../../../assets/img/wenziqiashang4.png" alt="">文字<br>洽商
                     </div>
-                    <div class="bannerBtn1">
+                    <a :href="'tel:'+apply_info.phone" class="bannerBtn1">
                         <img src="../../../assets/img/yijiantonghua4.png" alt="">一键<br>通话
-                    </div>
-                    <div class="bannerBtn1">
+                    </a>
+                    <div class="bannerBtn1" @click="toShare">
                         <img src="../../../assets/img/yijianzhuanfa4.png" alt="">一键<br>转发
                     </div>
                 </div>
@@ -57,7 +59,7 @@
                 项目展示
             </div>
             <div class="org-project-list">
-                <div class="org-project-item" :class="{active:project_info.length % 2 ===1 && index === 0}"
+                <router-link :to="'/Content/projectDetail?id='+item.id"  class="org-project-item" :class="{active:project_info.length % 2 ===1 && index === 0}"
                      v-for="(item,index) in project_info" :key="index">
                     <img class="item-image" :class="{active:project_info.length % 2 ===1 && index === 0}"
                          :src="item.xiangmu_kaizhan_img[0]"/>
@@ -65,7 +67,7 @@
                         {{item.entry_name}}
                     </div>
                     <img class="item-tag" src="../../../assets/img/img_tuijian.png" v-if="item.instructions"/>
-                </div>
+                </router-link>
             </div>
         </div>
 
@@ -124,13 +126,16 @@
                            @change="onChange">
             <template class="title" v-slot:cover>{{previewTitle}}</template>
         </van-image-preview>
+        <share :showShare="showShare" @setShare="setShare"></share>
     </div>
 </template>
 
 <script>
     import {getInstitutionInfo} from '@/api'
+    import Share from "../../Components/Share.vue";
 
     export default {
+        components: {Share},
         name: "Template4",
         data() {
             return {
@@ -185,7 +190,7 @@
                 previewTitle: '',
                 show: false,
                 swiperOptionTop: {
-                    loop: true,
+                    loop: false,
                     loopedSlides: 3, // looped slides should be the same
                     spaceBetween: 5,
                     navigation: {
@@ -194,7 +199,7 @@
                     }
                 },
                 swiperOptionThumbs: {
-                    loop: true,
+                    loop: false,
                     // 默认选中中间一张
                     centeredSlides: true,
                     //自动轮播
@@ -209,7 +214,8 @@
                     slidesPerView: 'auto',
                     touchRatio: 0.2,
                     slideToClickedSlide: true
-                }
+                },
+                showShare: false
             }
         },
         created() {
@@ -246,6 +252,9 @@
                     swiperTop.controller.control = swiperThumbs
                     swiperThumbs.controller.control = swiperTop
                 })
+
+                this.swiperOptionThumbs.loop = this.organization.length > 2
+                this.swiperOptionTop.loop = this.organization.length > 2
             },
             toMienPreview(index) {
                 this.startPosition = index
@@ -258,6 +267,12 @@
                 this.previewTitle = this.organization[index].title
                 this.startPosition = index;
             },
+            toShare() {
+                this.showShare = true
+            },
+            setShare(state){
+                this.showShare = state
+            }
         },
         mounted() {
             this.$nextTick(() => {
@@ -298,9 +313,12 @@
                 display: flex;
                 align-items: center;
                 img {
-                    display: block;
                     width: 100px;
+                    height: 100px;
                     margin-right: 20px;
+                    border-radius: 100px;
+                    border: 1px solid #fff100;
+                    object-fit: scale-down;
                 }
                 p {
                     flex: 1;
@@ -325,14 +343,20 @@
                 width: 100%;
                 display: flex;
                 padding: 30px;
-                > img {
+                .img{
                     width: 458px;
                     height: 343px;
                     background-color: #ffffff;
                     border-radius: 12px;
                     border: solid 3px #ff7200;
-                    object-fit: scale-down;
+                    > img {
+                        width: 450px;
+                        height: 100%;
+                        border-radius: 12px;
+                        object-fit: scale-down;
+                    }
                 }
+
                 .BannerBox {
                     width: 100%;
                     height: 343px;

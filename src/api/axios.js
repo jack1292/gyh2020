@@ -31,7 +31,7 @@ service.interceptors.request.use(
 // response 拦截器
 service.interceptors.response.use(
   response => {
-    if(response.data.status === 200 || response.data.status === 1){
+    if(response.data.status === 200 || response.data.status === 1 || response.data.code === 1){
       return response.data
     }else if (response.data.code === 500) {
       Dialog.alert(

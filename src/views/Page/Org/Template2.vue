@@ -41,10 +41,10 @@
                     <div class="bannerBtn1">
                         文字<br>洽商
                     </div>
-                    <div class="bannerBtn2">
+                    <a :href="'tel:'+apply_info.phone" class="bannerBtn2">
                         一键<br>通话
-                    </div>
-                    <div class="bannerBtn3">
+                    </a>
+                    <div class="bannerBtn3" @click="toShare">
                         一键<br>转发
                     </div>
                 </div>
@@ -69,11 +69,11 @@
             <div class="org-project-list">
                 <swiper :options="swiperOption">
                     <swiper-slide class="swiper-slide" v-for="(item,index) in project_info" :key="index">
-                        <div class="org-project-item">
+                        <router-link :to="'/Content/projectDetail?id='+item.id"  class="org-project-item">
                             <img class="item-image" :src="item.xiangmu_kaizhan_img[0]"/>
                             <div class="item-title">{{item.entry_name}}</div>
                             <img class="item-tag" src="../../../assets/img/img_tuijian.png" v-if="item.instructions"/>
-                        </div>
+                        </router-link>
                     </swiper-slide>
                 </swiper>
             </div>
@@ -116,13 +116,16 @@
         <van-image-preview v-model="show" :startPosition="startPosition" :closeable="true" :images="srcList" @change="onChange">
             <template class="title" v-slot:cover>{{previewTitle}}</template>
         </van-image-preview>
+        <share :showShare="showShare" @setShare="setShare"></share>
     </div>
 </template>
 
 <script>
     import {getInstitutionInfo} from '@/api'
+    import Share from "../../Components/Share.vue";
 
     export default {
+        components: {Share},
         name: "Template2",
         data() {
             return {
@@ -182,15 +185,16 @@
                     // 默认选中中间一张
                     centeredSlides: true,
                     //自动轮播
-                    autoplay: {
+                    autoplay:  {
                         delay: 3000,
                         //当用户滑动图片后继续自动轮播
                         disableOnInteraction: false,
                         stopOnLastSlide: false
                     },
                     //开启循环模式
-                    loop: true
-                }
+                    loop: false
+                },
+                showShare: false
             }
         },
         created() {
@@ -232,6 +236,12 @@
                 this.previewTitle = this.organization[index].title
                 this.startPosition = index;
             },
+            toShare() {
+                this.showShare = true
+            },
+            setShare(state){
+                this.showShare = state
+            }
         }
     }
 </script>
@@ -256,9 +266,12 @@
                 display: flex;
                 align-items: center;
                 img {
-                    display: block;
                     width: 100px;
+                    height: 100px;
                     margin-right: 20px;
+                    border-radius: 100px;
+                    border: 1px solid #fff100;
+                    object-fit: scale-down;
                 }
                 p {
                     flex: 1;
@@ -279,7 +292,7 @@
 
         }
         .desc {
-            z-index: 1024;
+            z-index: 9;
             position: relative;
             margin-left: 24px;
             margin-right: 24px;
@@ -465,7 +478,7 @@
                         position: relative;
                         overflow: hidden;
                         transition: 1s;
-                        transform: scale(0.9);
+                        transform: scale(0.8);
                         //swriper自带的类名（选中时的样式）
 
                         &.active {

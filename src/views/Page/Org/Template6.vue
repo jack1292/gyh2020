@@ -15,10 +15,10 @@
                 <div class="bannerBtn1">
                     <img src="../../../assets/img/wenziqiashang6.png" alt="">文字<br>洽商
                 </div>
-                <div class="bannerBtn1">
+                <a :href="'tel:'+apply_info.phone" class="bannerBtn1">
                     <img src="../../../assets/img/yijiantonghua6.png" alt="">一键<br>通话
-                </div>
-                <div class="bannerBtn1">
+                </a>
+                <div class="bannerBtn1" @click="toShare">
                     <img src="../../../assets/img/yijianzhuanfa6.png" alt="">一键<br>转发
                 </div>
             </div>
@@ -55,14 +55,14 @@
                 <img src="../../../assets/img/img_temp_project_6.png"/>
             </div>
             <div class="org-project-list">
-                <div class="org-project-item" :class="{active:project_info.length % 2 ===1 && index === 0}"
+                <router-link :to="'/Content/projectDetail?id='+item.id" class="org-project-item" :class="{active:project_info.length % 2 ===1 && index === 0}"
                      v-for="(item,index) in project_info" :key="index">
                     <img class="item-image" :class="{active:project_info.length % 2 ===1 && index === 0}" :src="item.xiangmu_kaizhan_img[0]"/>
                     <div class="item-title ovHide" :class="{active:project_info.length % 2 ===1 && index === 0}">
                         {{item.entry_name}}
                     </div>
                     <img class="item-tag" src="../../../assets/img/img_tuijian.png" v-if="item.instructions"/>
-                </div>
+                </router-link>
             </div>
         </div>
 
@@ -112,13 +112,16 @@
                            @change="onChange">
             <template class="title" v-slot:cover>{{previewTitle}}</template>
         </van-image-preview>
+        <share :showShare="showShare" @setShare="setShare"></share>
     </div>
 </template>
 
 <script>
     import {getInstitutionInfo} from '@/api'
+    import Share from "../../Components/Share.vue";
 
     export default {
+        components: {Share},
         name: "Template6",
         data() {
             return {
@@ -172,6 +175,7 @@
                 startPosition: 0,
                 previewTitle: '',
                 show: false,
+                showShare: false
             }
         },
         created() {
@@ -213,6 +217,12 @@
                 this.previewTitle = this.organization[index].title
                 this.startPosition = index;
             },
+            toShare() {
+                this.showShare = true
+            },
+            setShare(state){
+                this.showShare = state
+            }
         }
     }
 </script>
@@ -236,7 +246,11 @@
                 img {
                     display: block;
                     width: 100px;
+                    height: 100px;
                     margin-right: 20px;
+                    border-radius: 100px;
+                    border: 1px solid #fff100;
+                    object-fit: scale-down;
                 }
                 p {
                     flex: 1;

@@ -16,10 +16,10 @@
                 <div class="bannerBtn1">
                     <img src="../../../assets/img/wenziqiashang.png" alt="">文字洽商
                 </div>
-                <div class="bannerBtn2">
+                <a :href="'tel:'+apply_info.phone" class="bannerBtn2">
                     <img src="../../../assets/img/yijiantonghua.png" alt="">一键通话
-                </div>
-                <div class="bannerBtn3">
+                </a>
+                <div class="bannerBtn3" @click="toShare">
                     <img src="../../../assets/img/yijianzhuanfa.png" alt="">一键转发
                 </div>
             </div>
@@ -71,11 +71,11 @@
             <div class="org-project-list">
                 <swiper class="swiper" :options="swiperOptionTop" ref="swiperTop">
                     <swiper-slide class="swiper-slide" v-for="(item,index) in project_info" :key="index">
-                        <div class="org-project-item">
+                        <router-link :to="'/Content/projectDetail?id='+item.id"  class="org-project-item">
                             <img class="item-image active" :src="item.xiangmu_kaizhan_img[0]"/>
                             <div class="item-title active">{{item.entry_name}}</div>
                             <img class="item-tag" src="../../../assets/img/img_tuijian.png" v-if="item.instructions"/>
-                        </div>
+                        </router-link>
                     </swiper-slide>
                     <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
                     <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
@@ -115,12 +115,15 @@
         <van-image-preview v-model="show" :startPosition="startPosition" :closeable="true" :images="srcList" @change="onChange">
             <template class="title" v-slot:cover>{{previewTitle}}</template>
         </van-image-preview>
+        <share :showShare="showShare" @setShare="setShare"></share>
     </div>
 </template>
 
 <script>
     import {getInstitutionInfo} from '@/api'
+    import Share from "../../Components/Share.vue";
     export default {
+        components: {Share},
         name: "Template3",
         data() {
             return {
@@ -175,7 +178,7 @@
                 previewTitle:'',
                 show:false,
                 swiperOptionTop: {
-                    loop: true,
+                    loop: false,
                     loopedSlides: 3, // looped slides should be the same
                     spaceBetween: 5,
                     navigation: {
@@ -184,7 +187,7 @@
                     }
                 },
                 swiperOptionThumbs: {
-                    loop: true,
+                    loop: false,
                     // 默认选中中间一张
                     centeredSlides: true,
                     //自动轮播
@@ -199,7 +202,8 @@
                     slidesPerView: 'auto',
                     touchRatio: 0.2,
                     slideToClickedSlide: true
-                }
+                },
+                showShare: false
             }
         },
         created() {
@@ -248,6 +252,12 @@
                 this.previewTitle = this.organization[index].title
                 this.startPosition = index;
             },
+            toShare() {
+                this.showShare = true
+            },
+            setShare(state){
+                this.showShare = state
+            }
         },
         mounted() {
             this.$nextTick(() => {
@@ -280,7 +290,11 @@
                 img {
                     display: block;
                     width: 100px;
+                    height: 100px;
                     margin-right: 20px;
+                    border-radius: 100px;
+                    border: 1px solid #fff100;
+                    object-fit: scale-down;
                 }
                 p {
                     flex: 1;
