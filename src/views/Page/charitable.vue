@@ -1,54 +1,55 @@
 <template>
   <div class="charitable-warpper">
     <video
-        src="http://gyhfile.shzzfw.com/%E6%85%88%E5%96%84%E7%BB%BC%E5%90%88%E7%89%87%EF%BC%88%E6%9C%89%E7%89%87%E5%A4%B4%EF%BC%89mp4.mp4"
+        src="http://gyhfile.shzzfw.com/%E6%85%88%E5%96%84%E7%BB%BC%E5%90%88%E7%89%8720201027.mp4"
+        type="video/mp4"
         controls poster="../../assets/img/cishan.jpg" class="charitable-video"></video>
     <div class="charitable-title">2020年首都慈善奖宣传片</div>
 
     <div class="charitable-other">
-      <router-link to="/Contentn/shoucilian" class="charitable-other-item">
-        <img src="../../assets/img/cishanbeijin.png" alt="">
+      <router-link to="scl" class="charitable-other-item">
+        <img src="../../assets/img/csbj.png" alt="">
       </router-link>
-      <router-link to="/Contentn/fulian" class="charitable-other-item">
-        <img src="../../assets/img/funvlianhehui.png" alt="">
+      <router-link to="fl" class="charitable-other-item">
+        <img src="../../assets/img/fnlhh.png" alt="">
       </router-link>
-      <router-link to="/Contentn/shizihui" class="charitable-other-item">
-        <img src="../../assets/img/hongshizihui.png" alt="">
-      </router-link>
+      <!--<router-link to="/Contentn/shizihui" class="charitable-other-item">-->
+        <!--<img src="../../assets/img/hongshizihui.png" alt="">-->
+      <!--</router-link>-->
     </div>
 
     <div class="organization">
       <div class="title">慈善组织奖</div>
       <div class="organization-list">
-        <div v-for="(item,index) in organization" :key="index" class="organization-item" :class="{active:index>2}" @click="showVideo(item.video_url)">
+        <router-link :to="'charitableDetail?id='+item.id" v-for="(item,index) in organization" :key="index" class="organization-item" :class="{active:index>2}">
           <img :src="item.thumb" alt="">
           <p class="ovHide">{{ item.title }}</p>
-        </div>
+        </router-link>
       </div>
     </div>
     <div class="enterprise">
       <div class="title">爱心企业奖</div>
       <div class="enterprise-list">
-        <div v-for="(item,index) in enterprise" :key="index" class="enterprise-item" :class="{active:index>2}" @click="showVideo(item.video_url)">
+        <router-link :to="'charitableDetail?id='+item.id" v-for="(item,index) in enterprise" :key="index" class="enterprise-item" :class="{active:index>2}">
           <img :src="item.thumb" alt="">
           <p class="ovHide">{{ item.title }}</p>
-        </div>
+        </router-link>
       </div>
     </div>
     <div class="personal">
       <div class="title">慈善个人奖</div>
       <div class="personal-list">
-        <div v-for="(item,index) in enterprise" :key="index" class="personal-item" @click="showVideo(item.video_url)">
+        <router-link :to="'charitableDetail?id='+item.id" v-for="(item,index) in personal" :key="index" class="personal-item">
           <img :src="item.thumb" alt="">
           <p class="ovHide">{{ item.title }}</p>
-        </div>
+        </router-link>
       </div>
     </div>
-    <a href="http://www.bca.org.cn/bjcsxh/web/index.html#cur4" class="img-link">
-      <img src="../../assets/img/a1.png" alt="">
-    </a>
-    <a href="" class="img-link active">
+    <router-link to="csf" class="img-link">
       <img src="../../assets/img/a2.png" alt="">
+    </router-link>
+    <a href="http://www.bca.org.cn/web/article/402881225914c395015914c4e7f00000/ff80808172d5662e01740eda58170520/0/index.html#p=1" target="_blank" class="img-link active">
+      <img src="../../assets/img/a1.png" alt="">
     </a>
 
     <van-overlay :show="show"  >

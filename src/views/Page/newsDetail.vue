@@ -1,11 +1,13 @@
 <template>
-  <div>新闻详情</div>
+    <div>
+
+    </div>
 </template>
 
 <script>
-export default {
-  name: "newsDetail"
-}
+    export default {
+        name: "newsDetail"
+    }
 </script>
 
 <style scoped lang="scss">

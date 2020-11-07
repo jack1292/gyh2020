@@ -30,6 +30,19 @@ export const getOrgList = (page, limit, keyword, area, org_type, type) => get('/
 })
 
 /*
+* 获取组织分类列表
+* @constructor jack
+* paranm page{number}:页码
+* paranm limit{number}:每页数量
+* paranm keyword{string}:搜索关键字
+* */
+export const getOrgOtherList = (page, limit, keyword) => get('/api/Organization/query_other', {
+  page,
+  limit,
+  keyword
+})
+
+/*
 * 机构信息详情
 * @constructor jack
 * paranm institution_id{number}:机构ID
@@ -110,3 +123,28 @@ export const getAlleviationList = (page, limit) => get('/api/consume/index', {
 export const submitCall = (name, org, tel, message) => get('/api/index/contact', {
   name, org, tel, message
 })
+
+/**
+ *-------------------------------消费扶贫---------------------------
+ */
+/*
+* 消费扶贫-视频
+* @constructor jack
+* */
+export const imageList = () => get('/api/Consume/imagelist', {})
+/*
+* 消费扶贫-商品
+* @constructor jack
+* */
+export const goodsList = () => get('/api/consume/index', {})
+/*
+* 消费扶贫-商品
+* @constructor jack
+* */
+export const queryGoodsList = (id,page,limit) => get('/api/Consume/query', {id,page,limit})
+
+/*
+* 慈善展-详情
+* @constructor jack
+* */
+export const getCharitableDetail = (id) => get('/api/Charitable/detail', {id})

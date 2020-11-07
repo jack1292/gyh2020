@@ -7,7 +7,7 @@
     </div>
     <div class="type-item" v-if="list.length>0">
       <div class="org-list">
-        <router-link :to="'/Content/template'+items.shop_id+'?id=' + items.user_id" class="org-item" v-for="(item,index) in list" :key="index">
+        <router-link :to="'/Content/template'+item.shop_id+'?id=' + item.user_id" class="org-item" v-for="(item,index) in list" :key="index">
           <div class="org-info">
             <div class="org-img">
               <img :src="item.logo_url" alt="">
@@ -37,7 +37,7 @@ export default {
       keyword:'',
       area:'',
       type:'',
-      state:1
+      state:2
     }
   },
   created() {
@@ -49,7 +49,8 @@ export default {
   methods: {
     async getList() {
       let _data = await getOrgList(1,10000,this.keyword,this.area,this.type,this.state)
-      this.list = _data.data
+      this.list = _data.data.data
+        console.log(_data.data.data)
     },
     toOrgList(){
       this.getList()
