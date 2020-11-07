@@ -1,118 +1,243 @@
 <template>
-    <div class="warrper">
-        <img class="classify-title" src="../../../assets/img/special_desc2.png"/>
-        <div class="desc">
-            一、参与的机构和人数创新高，截至目前，已有超过3000家社会组织直接或间接参与相关活动； 二、“党建引领”贯穿始终，突出展现社会组织“不忘初心跟党走”、积极开展公益慈善事业的新成效； 三、联合举办突出亮点，配合首都国际交往中心建设，设立“一带一路建设”板块并开展相关活动，增加了“国际化”色彩；同时，市残联、团市委、市科协等单位合办特色展区，充分展示相关领域社会组织发展成果； 四、“拓展空间”线上线下相结合，在北京社会组织众扶平台开设专栏，打造“永不落幕的公益慈善汇展”； 五、资源对接实现全覆盖，从供需两端全方位整合相关资源，搭建精准、务实的交流对接平台。
-            本届“汇展”立足北京、辐射津冀，是集中、全面展示北京市社会公益和慈善事业发展成果、对接社会服务资源、引领社会组织有序 参与社会治理的综合性平台。本届“汇展”围绕“公益慈善、汇聚力量，有你有我、共建共享”主题分为“展““洽““品““论“4大内容板块，有现场展览展示、互动交流、观摩体验、资源对接、主题论坛等多种表现。
-        </div>
-        <video class="video" controls src="https://www.runoob.com/try/demo_source/mov_bbb.mp4"></video>
-        <img class="classify-title" src="../../../assets/img/special_mine2.png"/>
-        <div class="mine-list">
-            <div class="mine-item" v-for="(item,index) in list" :key="index" @click="toMienPreview(index)">
-                <img class="item-image" :src="item.url"/>
-                <div class="item-title">{{item.title}}</div>
-            </div>
-        </div>
-        <van-image-preview v-model="show" :startPosition="startPosition" :closeable="true" :images="srcList"
-                           @change="onChange">
-            <template class="preview-title" v-slot:cover>{{previewTitle}}</template>
-        </van-image-preview>
+  <div class="warrper">
+    <img class="classify-title" src="../../../assets/img/special_desc2.png"/>
+    <div class="desc">
+      <p>打好脱贫攻坚战是党的十九大提出的三大攻坚战之一，对如期全面建成小康社会，实现我们党第一个百年奋斗目标具有十分重要的意义。让贫困人口和贫困地区同全国一道进入全面小康社会，是我们党的庄严承诺。</p><br>
+      <p>
+        2017年12月，国务院扶贫开发领导小组印发关于广泛引导和动员社会组织参与脱贫攻坚的通知。2018年7月19日，北京市委社会工委、市民政局和市扶贫援合办联合召开北京市社会组织参与脱贫攻坚和精准救助动员大会，同时启动北京市社会组织参与脱贫攻坚推介对接活动。北京市委社会工委、市民政局多次召开专题会议，专门研究社会组织参与脱贫攻坚工作，市委社会工委、市民政局领导亲自带队到帮扶地区进行需求对接，开展项目调研。</p><br>
+      <p>
+        北京市利用52个社会组织联合党委，动员号召社会组织领域广大党员发挥先锋模范作用，投身脱贫攻坚行动，把党的政治优势、组织优势转化为引领发展优势和脱贫攻坚优势。各级各类社会组织主动投身、积极参与脱贫攻坚行动，听党话、跟党走，结构性参与脱贫攻坚国家战略，坚持大扶贫格局，坚决打赢脱贫攻坚战！</p>
     </div>
+    <video class="video" controls src="http://gyhfile.shzzfw.com/%E8%84%B1%E8%B4%AB%E6%94%BB%E5%9D%9A.mp4"  poster="../../../assets/img/csFeng.png"></video>
+    <img class="classify-title" src="../../../assets/img/special_mine2.png"/>
+    <swiper class="swiper" :options="swiperOption" ref="mySwiper">
+      <swiper-slide class="swiper-slide" v-for="(item,index) in list" :key="index" >
+        <div class="mine-item" @click="toMienPreview(index)">
+          <img class="item-image" :src="item.image"/>
+          <div class="item-title ovHide">{{ item.title }}</div>
+        </div>
+      </swiper-slide>
+      <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
+      <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
+    </swiper>
+    <van-image-preview v-model="show" :startPosition="startPosition" :closeable="true" :images="srcList"
+                       @change="onChange">
+      <template class="preview-title" v-slot:cover>{{ previewTitle }}</template>
+    </van-image-preview>
+    <div class="classify-title margin-bottom">专题案例</div>
+    <div v-for="item in caseList" :key="item.id">
+      <a v-if="item.url" :href="item.url"
+         class="case-item">
+        <h3 class="ovHide">{{ item.title }}</h3>
+        <div class="ovHide2" v-html="item.content"></div>
+      </a>
+      <router-link v-else :to="'/Content/specialDetail?sid=2&id=' + item.id" class="case-item">
+        <h3 class="ovHide">{{ item.title }}</h3>
+        <div class="ovHide2" v-html="item.content"></div>
+      </router-link>
+    </div>
+    <span class="more" v-if="this.caseList.length<this.total" @click="addMore">查看更多</span>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "special1",
-        data() {
-            return {
-                list: [{
-                    title: '北京社会组织党建',
-                    url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603426606284&di=52e1e500c7e9a856d2076b89687818d5&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F64%2F52%2F01300000407527124482522224765.jpg'
-                }, {
-                    title: '北京社会组织党建',
-                    url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603426606284&di=52e1e500c7e9a856d2076b89687818d5&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F64%2F52%2F01300000407527124482522224765.jpg'
-                }, {
-                    title: '北京社会组织党建',
-                    url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603426606284&di=52e1e500c7e9a856d2076b89687818d5&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F64%2F52%2F01300000407527124482522224765.jpg'
-                }],
-                srcList: [],
-                startPosition: 0,
-                previewTitle: '',
-                mineTitle: '',
-                show: false,
-            }
+import {elegantList,caseList} from "@/api/special";
+export default {
+  name: "special2",
+  data() {
+    return {
+      list: [],
+      srcList: [],
+      caseList:[],
+      page:1,
+      total:0,
+      swiperOption: {
+        //可见图片张数
+        slidesPerView: 2,
+        // 默认选中中间一张
+        centeredSlides: true,
+        //自动轮播
+        autoplay: {
+          delay: 5000,
+          //当用户滑动图片后继续自动轮播
+          disableOnInteraction: false,
+          stopOnLastSlide: false
         },
-        created() {
-            this.srcList = this.list.map(item => {
-                return item.url
-            })
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
         },
-        methods: {
-            toMienPreview(index) {
-                this.startPosition = index
-                this.show = true
-                this.previewTitle = this.list[index].title
-            },
-        }
+        //开启循环模式
+        loop: true,
+        on: {}
+      },
+      startPosition: 0,
+      previewTitle: '',
+      mineTitle: '',
+      show: false,
     }
+  },
+  created() {
+    this.init()
+    this.getcaseList()
+  },
+  methods: {
+    async init(){
+      let that = this
+      let _data = await elegantList(2,1)
+      this.list = _data.data.data
+      this.srcList = this.list.map(item => {
+        return item.image
+      })
+      that.swiperOption.on = {
+        click(e) {
+          if (e.target.className === 'item-image') {
+            let swiper = that.$refs.mySwiper.$swiper;
+            that.toMienPreview(swiper.realIndex)
+          }
+        }
+      }
+    },
+    async getcaseList(){
+      let _data = await caseList(2,2,this.page,5)
+      this.caseList = [...this.caseList,..._data.data.data]
+      this.total = _data.data.total
+    },
+    addMore(){
+      this.page++
+      this.getcaseList()
+    },
+    toMienPreview(index) {
+      this.startPosition = index
+      this.show = true
+      this.previewTitle = this.list[index].title
+    },
+    onChange(index){
+      this.previewTitle = this.list[index].title
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">
-    .warrper {
-        background: url("../../../assets/img/bg_special2.png") no-repeat;
-        background-size: 100% auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 377px;
-        padding-bottom: 60px;
-        .video {
-            width: 693px;
-            height: 372px;
-            margin-top: 20px;
-        }
-        .classify-title {
-            width: 600px;
-            height: auto;
-            margin-top: 60px;
-        }
-        .desc {
-            width: 690px;
-            font-size: 28px;
-            line-height: 44px;
-            color: #333333;
-            margin-top: 42px;
-            text-align: justify;
-        }
-        .mine-list {
-            display: flex;
-            padding: 20px;
-            margin-top: 50px;
-            flex-direction: row;
-            flex-wrap: wrap;
-            .mine-item {
-                width: 337px;
-                height: 252px;
-                position: relative;
-                margin: 9px;
-                .item-image {
-                    object-fit: scale-down;
-                    width: 337px;
-                    height: 252px;
-                }
-                .item-title {
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    text-align: center;
-                    font-size: 26px;
-                    color: #ffffff;
-                    width: 100%;
-                    height: 49px;
-                    line-height: 49px;
-                    background-color: #bb1b21;
-                }
-            }
-        }
+.swiper-slide-active, .swiper-slide-duplicate-active {
+  transform: scale(1.1);
+  z-index: 1000;
+}
+.warrper {
+  background: url("../../../assets/img/bg_special2.png")rgb(243,207,182) no-repeat;
+  background-size: 100% auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 377px;
+  padding-bottom: 60px;
+
+  .video {
+    width: 693px;
+    height: 372px;
+    margin-top: 20px;
+  }
+
+  .classify-title {
+    width: 600px;
+    height: auto;
+    margin-top: 60px;
+    font-size: 38px;
+    text-align: center;
+    -webkit-text-fill-color: #e11e15; /*文字的填充色*/
+    -webkit-text-stroke: 1.5px #fff;
+    font-weight: bold;
+  }
+
+  .desc {
+    width: 690px;
+    font-size: 28px;
+    line-height: 44px;
+    color: #333333;
+    margin-top: 42px;
+    text-align: justify;
+    p{
+      text-indent: 56px;
     }
+  }
+
+  .swiper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 500px;
+    margin-top: 10px;
+
+    .swiper-button-prev, .swiper-button-next {
+      width: 60px;
+      height: 60px;
+      background-color: #f5f5f555;
+      border-radius: 60px;
+    }
+
+    .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .mine-item {
+        width: 535px;
+        height: 400px;
+        position: relative;
+
+        .item-image {
+          object-fit: cover;
+          width: 535px;
+          height: 400px;
+        }
+
+        .item-title {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          padding: 0 10px;
+          text-align: center;
+          font-size: 28px;
+          color: #ffffff;
+          width: 100%;
+          height: 52px;
+          line-height: 52px;
+          background-color: #00000055;
+        }
+      }
+    }
+  }
+  .case-item{
+    display: block;
+    margin: 10px 30px;
+    padding: 20px 10px;
+    border-radius: 5px;
+    border: 1px solid #c70005;
+    background: #fff;
+    width: 690px;
+    h3{
+      font-size: 32px;
+      width: 650px;
+      height: 40px;
+      line-height: 40px;
+      margin-bottom: 20px;
+    }
+    >div{
+      height: 80px;
+    }
+  }
+  .more{
+    display: block;
+    width: 200px;
+    height: 60px;
+    margin: 20px auto;
+    text-align: center;
+    line-height: 60px;
+    background: #c70005;
+    color: #ffd01e;
+    border-radius: 10px;
+  }
+}
 </style>

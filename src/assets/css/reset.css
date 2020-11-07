@@ -62,7 +62,9 @@ td {
     padding: 0;
     list-style-type: none;
 }
-
+video {
+    object-fit: fill;
+}
 img {
     border: 0;
 }
@@ -634,5 +636,19 @@ input {
     display: none;
 }
 .van-step--finish{
-    color: rgb(226, 65, 46);;
+    color: rgb(226, 65, 46);
+}
+.specialDetail p{
+    line-height: 180% !important;
+}
+.specialDetail a{
+    display: block;
+    color:rgb(226, 65, 46);
+    font-size: 28px;
+    line-height: 150%;
+}
+.specialDetail img{
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
 }

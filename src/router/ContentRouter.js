@@ -131,7 +131,24 @@ const ContentRouter = [
       title: '慈善详情',
     },
     component: () => import('../views/Page/charitableDetail'),
+  },
+  {
+    path: 'specialDetail',
+    meta: {
+      title: '详情',
+    },
+    component: () => import('../views/Page/specialDetail'),
+  },
+  {
+    path: 'addressList',
+    meta: {
+      title: '站点建设详情',
+    },
+    component: () => import('../views/Page/addressList'),
   }
+
+
+
 
 
 

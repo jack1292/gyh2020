@@ -4,16 +4,18 @@ import router from './router'
 import store from './store'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import  plugin from './plugin/index'
-import { ImagePreview,Tabbar, TabbarItem,Button,Cell, CellGroup,Overlay,Step, Steps,Swipe, SwipeItem } from 'vant';
+import { ImagePreview,Tabbar, TabbarItem,Button,Cell, CellGroup,Overlay,Step, Steps,Swipe, SwipeItem,List } from 'vant';
 import './assets/css/reset.css'
 import './assets/font/iconfont.css'
 import 'swiper/dist/css/swiper.css'
 import './api/index'
 import './tools/index'
+import {  } from 'vant';
+
 
 
 // 全局注册
-
+Vue.use(List);
 Vue.use(Step);
 Vue.use(Steps);
 Vue.use(Cell);

@@ -45,7 +45,7 @@ service.interceptors.response.use(
         })
       })
     }else {
-      Toast.fail('response.message')
+      Toast(response.data.msg)
       return Promise.reject('error')
     }
   },
