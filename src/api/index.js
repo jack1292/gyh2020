@@ -89,6 +89,12 @@ export const getCharitable = () => get('/api/Charitable/index', {})
 * */
 export const getForum = () => get('/api/thefront/video', {})
 
+/*
+* 获取论坛视频列表
+* @constructor jack
+* */
+export const getForumVideoDetail = (id) => get('/api/thefront/videoDetail', {id})
+
 
 
 

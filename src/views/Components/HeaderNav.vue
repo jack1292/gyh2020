@@ -49,6 +49,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   background-color: #fff6f6;
+  z-index: 9999;
   .lgoo{
     display: block;
     height: 70px;

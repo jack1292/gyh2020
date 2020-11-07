@@ -123,6 +123,13 @@ const HomeRouter = [
         component: () => import('../views/Page/forum'),
     },
     {
+        path: 'forumDetail',
+        meta: {
+            title: '2020北京公益慈善汇展-前沿论坛',
+        },
+        component: () => import('../views/Page/forumDetail'),
+    },
+    {
         path: 'alleviation',
         meta: {
             title: '2020北京公益慈善汇展-消费扶贫',

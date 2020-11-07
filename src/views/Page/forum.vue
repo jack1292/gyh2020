@@ -29,7 +29,7 @@
       <div class="forum-list">
         <h3>公益前沿论坛</h3>
         <router-link v-for="(item,index) in list" :key="index" class="forum-item"
-                     :to="'/Content/charitableDetail?id=' + item.id">
+                     :to="'forumDetail?id=' + item.id">
           {{ item.title }}
         </router-link>
       </div>
