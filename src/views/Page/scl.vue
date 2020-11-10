@@ -110,25 +110,32 @@
             <div class="classify-more" v-if="! more5" @click="more5 = !more5">查看更多</div>
         </div>
         <div class="scl-yq">
-            <div class="scl-yq-title">市慈善协会全面启动抗击疫情专班助力疫情防控</div>
+            <div class="scl-yq-title">首都公益慈善联合会协同会员单位北京市慈善协会全面启动抗击疫情专班助力疫情防控</div>
             <div class="scl-yq-content">
                 <div>
-                    在2020年抗击新冠疫情最关键的时刻，市慈善协会临危受命被指定为代表市政府接受社会捐赠单位。协会全体人员不怕危险、积极投身到此项工作中。一是迅速启动战时工作机制。实行“全天候”抗疫，从接收海外物资回流到支持复工复产，再到支持援外，全过程参与。二是严格落实专班要求，实行了最为严格的接受捐赠管理制度。及时编制《境外捐赠物资进口操作指南》，为海外捐赠人提供捐赠说明书，从会员单位引入律师和审计团队参与接收捐赠管理。三是创新管理模式，充分发挥平台和纽带作用。建立专项资金捐赠信息管理与公示系统，做到一分钱的捐赠也能开具电子证书和收据；充分利用公募资质，与其它社会组织合作开发公募项目，支持抗疫工作。
-                </div>
-                <div>
-                    截至8月9日，协会接收款物合计10579.85万元，拨付款物合计9718.86万元。其中接收捐赠资金2667笔，共计4147.83万元；接收捐赠物资116批次，共计575.99万件，折合人民币价值约6432.02万元。拨付资金主要支援湖北省的抗疫工作，98%的物资支援北京市的抗疫工作。
+                    在2020年抗击新冠疫情最关键的时刻，作为首都慈善联合会会员单位的北京市 慈善协会临危受命被指定为代表市政府接受社会捐赠单位。联合会及协会全体人 员不怕危险、积极投身到此项工作中。一是迅速启动战时工作机制。实行“全天 候”抗疫，从接收海外物资回流到支持复工复产，再到支持援外，全过程参与。 二是严格落实专班要求，实行了最为严格的接受捐赠管理制度。及时编制《境外 捐赠物资进口操作指南》，为海外捐赠人提供捐赠说明书，从会员单位引入律师 和审计团队参与接收捐赠管理。三是创新管理模式，充分发挥平台和纽带作用。 建立专项资金捐赠信息管理与公示系统，做到一分钱的捐赠也能开具电子证书和 收据;充分利用公募资质，与其它社会组织合作开发公募项目，支持抗疫工作。 截至8月9日，接收款物合计10579.85万元，拨付款物合计9718.86万元。其中接 收捐赠资金2667笔，共计4147.83万元;接收捐赠物资116批次，共计575.99万件， 折合人民币价值约6432.02万元。拨付资金主要支援湖北省的抗疫工作，98%的物 资支援北京市的抗疫工作。
                 </div>
             </div>
         </div>
-        <div class="scl-chinese">献爱心捐献活动</div>
-        <div class="scl-eng">DONATION ACTIVITIES</div>
-        <div class="scl-love">
-            <div class="love-item" v-for="(item,index) in loves" :key="index">
-                <div class="love-title">{{item.title}}</div>
-                <img class="love-img" :src="item.img"/>
-                <div class="love-content">{{item.content}}</div>
-            </div>
-        </div>
+        <div class="scl-chinese">抗疫风采</div>
+        <!--<div class="scl-eng">DONATION ACTIVITIES</div>-->
+        <swiper class="swiper" :options="swiperOption" ref="mySwiper">
+            <swiper-slide class="swiper-slide" v-for="(item,index) in loves" :key="index">
+                <div class="mine-item" @click="toPreview(loves,true,index)">
+                    <img class="item-image" :src="item.img"/>
+                    <div class="item-title ovHide">{{ item.title }}</div>
+                </div>
+            </swiper-slide>
+            <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
+            <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
+        </swiper>
+        <!--<div class="scl-love">-->
+            <!--<div class="love-item" v-for="(item,index) in loves" :key="index">-->
+                <!--<div class="love-title">{{item.title}}</div>-->
+                <!--<img class="love-img" :src="item.img"/>-->
+                <!--<div class="love-content">{{item.content}}</div>-->
+            <!--</div>-->
+        <!--</div>-->
         <van-image-preview v-model="show" :startPosition="startPosition" :closeable="true" :images="previews" @change="onChange">
             <template class="title" v-slot:cover>{{previewTitle}}</template>
         </van-image-preview>
@@ -335,6 +342,26 @@
                 startPosition:0,
                 previewTitle:'',
                 show:false,
+                swiperOption: {
+                    //可见图片张数
+                    slidesPerView: 2,
+                    // 默认选中中间一张
+                    centeredSlides: true,
+                    //自动轮播
+                    autoplay: {
+                        delay: 5000,
+                        //当用户滑动图片后继续自动轮播
+                        disableOnInteraction: false,
+                        stopOnLastSlide: false
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev'
+                    },
+                    //开启循环模式
+                    loop: true,
+                    on: {}
+                },
             }
         },
         methods:{
@@ -354,6 +381,11 @@
 </script>
 
 <style scoped lang="scss">
+    .swiper-slide-active, .swiper-slide-duplicate-active {
+        transform: scale(1.1);
+        z-index: 1000;
+    }
+
     .scl-container {
         display: flex;
         flex-direction: column;
@@ -531,6 +563,53 @@
                     text-indent: 48px;
                     color: #666666;
                     margin-bottom: 20px;
+                }
+            }
+        }
+        .swiper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 500px;
+            margin-top: 10px;
+
+            .swiper-button-prev, .swiper-button-next {
+                width: 60px;
+                height: 60px;
+                background-color: #f5f5f555;
+                border-radius: 60px;
+            }
+
+            .swiper-slide {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .mine-item {
+                    width: 535px;
+                    height: 400px;
+                    position: relative;
+
+                    .item-image {
+                        object-fit: cover;
+                        width: 535px;
+                        height: 400px;
+                    }
+
+                    .item-title {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        padding: 0 10px;
+                        text-align: center;
+                        font-size: 28px;
+                        color: #ffffff;
+                        width: 100%;
+                        height: 52px;
+                        line-height: 52px;
+                        background-color: #00000055;
+                    }
                 }
             }
         }
