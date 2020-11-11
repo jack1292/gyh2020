@@ -5,7 +5,7 @@
         <div class="chinese">宣传片</div>
         <div class="eng">ADVERTISING<br/>VIDEO</div>
       </div>
-      <video class="video" controls src="http://gyhfile.shzzfw.com/%E7%A7%91%E6%8A%80%E5%88%9B%E6%96%B0.mp4"
+      <video class="video" controls src="http://gyhfile.shzzfw.com/zt8.mp4"
              poster="../../../assets/img/csFeng.png"></video>
     </div>
     <div class="desc">
@@ -16,124 +16,118 @@
       <p>
         作为政策的传递者、科学知识的普及者、社会服务的提供者，北京市科技类社会组织秉持围绕中心、发挥优势、突出主题、服务民众的宗旨，在传播教育健康科普知识、满足居民多元教育健康需求、助力建设国际一流的和谐宜居之都等方面，发挥积极作用。将其内化为居民的自我健康意识，自我防范意识，唤起自我管理的主动性。</p><br>
       <p>北京社会组织将继续在更大范围、以更多频次、用更新形式普及科技创新知识，聚焦居民急需关注、忧心担心，举办更多公益慈善活动。</p></div>
-    <div class="classify-title">
-      组织风采
+
+    <div class="page-title">科技支撑疫情抗击</div>
+
+    <div class="frist-box">
+      <router-link class="frist-item ovHide" :to="'/Content/specialDetail2?id='+ item.id+'&type=1'" v-for="item in list1" :key="item.id">{{item.title}}</router-link>
     </div>
-    <swiper class="swiper" :options="swiperOption" ref="mySwiper">
-      <swiper-slide class="swiper-slide" v-for="(item,index) in list" :key="index">
-        <div class="mine-item" @click="toMienPreview(index)">
-          <img class="item-image" :src="item.image"/>
-          <div class="item-title ovHide">{{ item.title }}</div>
-        </div>
-      </swiper-slide>
-      <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
-      <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
-    </swiper>
-    <van-image-preview v-model="show" :startPosition="startPosition" :closeable="true" :images="srcList"
-                       @change="onChange">
-      <template class="preview-title" v-slot:cover>{{ previewTitle }}</template>
-    </van-image-preview>
-    <div class="classify-title margin-bottom">专题案例</div>
-    <div v-for="item in caseList" :key="item.id">
-      <a v-if="item.url" :href="item.url"
-         class="case-item">
-        <h3 class="ovHide">{{ item.title }}</h3>
-        <div class="ovHide2" v-html="item.content"></div>
-      </a>
-      <router-link v-else :to="'/Content/specialDetail?sid=8&id=' + item.id" class="case-item">
-        <h3 class="ovHide">{{ item.title }}</h3>
-        <div class="ovHide2" v-html="item.content"></div>
+
+    <div class="page-title">科技助力精准扶贫</div>
+
+    <div class="two-box " :class="{active:showAll}">
+      <router-link class="two-item " :to="'/Content/specialDetail2?id='+ item.id+'&type=2'" v-for="item in list2" :key="item.id"><p class="ovHide">{{item.title}}</p></router-link>
+    </div>
+
+    <span class="show-all" @click="showAll = true" v-if="!showAll">查看全部</span>
+
+    <div class="page-title">学术交流助力科技创新</div>
+
+    <video controls class="three-video" v-if="list3.video" :poster="list3.video.image[0]" width="1200px">
+      <source :src="list3.video.video_url[0]" type="video/mp4">
+      您的浏览器不支持 video 标签。
+    </video>
+    <div class="three-list">
+      <router-link class="three-item "
+                   :to="'/Content/specialDetail3?id='+ item.id+'&type=3&sts='+item.sts" v-for="item in list3.list" :key="item.id">
+        <img :src="item.image[0]" alt="">
+        <p v-if="item.sts === 1">2019年<br/>机器人大赛</p>
+        <p v-if="item.sts === 2">第21届北京青年学术演讲比赛</p>
+        <p v-if="item.sts === 3">2020年<br/>机器人大赛</p>
       </router-link>
     </div>
-    <span class="more" v-if="this.caseList.length<this.total" @click="addMore">查看更多</span>
+
+
+
+    <div class="page-title">创新模式服务学会发展</div>
+
+    <div class="four-box">
+      <h3 class="four-title">2019年能力提升培训</h3>
+      <div v-if="list4.length>0" class="four-item-list">
+        <img v-for="(item,index) in list4[0].image" :key="index" :src="item" @click="showImg(index,1)" alt="">
+      </div>
+      <h3 class="four-title">2020年科技成果转化复合型人才培训</h3>
+      <div v-if="list4.length>0" class="four-item-list">
+        <img v-for="(item,index) in list4[1].image" :key="index" :src="item" @click="showImg(index,2)" alt="">
+      </div>
+      <h3 class="four-title">2020年能力提升培训</h3>
+      <div v-if="list4.length>0" class="four-item-list">
+        <video v-for="(item,index) in list4[2].video_url " :key="index" controls class="three-video"
+               :poster="list4[2].image[index]" width="1200px">
+          <source :src="item" type="video/mp4">
+          您的浏览器不支持 video 标签。
+        </video>
+      </div>
+      <h3 class="four-title">学会咨询辅导服务</h3>
+      <div v-if="list4.length>0" class="four-item-list">
+        <img v-for="(item,index) in list4[3].image" :key="index" :src="item" @click="showImg(index,4)" alt="">
+      </div>
+    </div>
+
+
+    <van-image-preview v-model="show" :startPosition="startPosition" :closeable="true" :images="srcList">
+
+    </van-image-preview>
   </div>
 </template>
 
 <script>
-import {caseList, elegantList} from "@/api/special";
+import {getKeji} from "@/api/special";
 
 export default {
   name: "special8",
   data() {
     return {
-      list: [],
-      srcList: [],
-      caseList:[],
-      page:1,
-      total:0,
-      swiperOption: {
-        //可见图片张数
-        slidesPerView: 2,
-        // 默认选中中间一张
-        centeredSlides: true,
-        //自动轮播
-        autoplay: {
-          delay: 5000,
-          //当用户滑动图片后继续自动轮播
-          disableOnInteraction: false,
-          stopOnLastSlide: false
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        },
-        //开启循环模式
-        loop: true,
-        on: {}
-      },
+      list1:[],
+      list2:[],
+      showAll:false,
+      list3:[],
+      list4:[],
+      srcList:[],
       startPosition: 0,
-      previewTitle: '',
-      mineTitle: '',
       show: false,
     }
   },
   created() {
     this.init()
-    this.getcaseList()
   },
   methods: {
     async init(){
-      let that = this
-      let _data = await elegantList(8,1)
-      this.list = _data.data.data
-      this.srcList = this.list.map(item => {
-        return item.image
-      })
-      that.swiperOption.on = {
-        click(e) {
-          if (e.target.className === 'item-image') {
-            let swiper = that.$refs.mySwiper.$swiper;
-            that.toMienPreview(swiper.realIndex)
-          }
-        }
+      let _data = await getKeji()
+      this.list1 = _data.data.type_1
+      this.list2 = _data.data.type_2
+      this.list3 = _data.data.type_3
+      this.list4 = _data.data.type_4
+    },
+    showImg(index,num){
+      if(num === 1){
+        this.srcList = this.list4[0].image
       }
-    },
-    async getcaseList(){
-      let _data = await caseList(8,2,this.page,5)
-      this.caseList = [...this.caseList,..._data.data.data]
-      this.total = _data.data.total
-    },
-    addMore(){
-      this.page++
-      this.getcaseList()
-    },
-    toMienPreview(index) {
+      if(num === 2){
+        this.srcList = this.list4[1].image
+      }
+      if(num === 4){
+        this.srcList = this.list4[3].image
+      }
       this.startPosition = index
       this.show = true
-      this.previewTitle = this.list[index].title
-    },
-    onChange(index){
-      this.previewTitle = this.list[index].title
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
-.swiper-slide-active, .swiper-slide-duplicate-active {
-  transform: scale(1.1);
-  z-index: 1000;
-}
+
 .warrper {
   background: url("../../../assets/img/bg_special8.png") no-repeat;
   background-size: 100% auto;
@@ -185,13 +179,6 @@ export default {
     }
   }
 
-  .classify-title {
-    font-size: 38px;
-    font-weight: bold;
-    color: #333333;
-    margin-top: 20px;
-  }
-
   .desc {
     background: url("../../../assets/img/special_desc8.png") no-repeat;
     background-size: 100% 100%;
@@ -207,91 +194,120 @@ export default {
     }
   }
 
-  .mine-img {
-    width: 585px;
-    height: 343px;
-    background-color: #1f3d7b;
-    border-radius: 12px;
-    margin-top: 50px;
+  .page-title{
+    height: 88px;
+    text-align: center;
+    line-height: 88px;
+    font-size: 36px;
+    font-weight: bold;
+    color: #007ac7;
   }
-
-  .swiper {
+  .frist-box{
+    padding: 30px;
+    .frist-item{
+      display: block;
+      width: 100%;
+      padding-left:  15px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      height: 88px;
+      line-height: 88px;
+      color: #fff;
+      font-size: 26px;
+      background: #46B7FC;
+    }
+  }
+  .two-box{
+    padding: 30px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 420px;
+    overflow: hidden;
     width: 100%;
-    min-height: 500px;
-    margin-top: 10px;
-
-    .swiper-button-prev, .swiper-button-next {
-      width: 60px;
-      height: 60px;
-      background-color: #f5f5f555;
-      border-radius: 60px;
+    &.active{
+      height: auto;
     }
-
-    .swiper-slide {
+    .two-item{
+      display: block;
+      width: 100%;
+      padding:  15px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      height: 88px;
+      line-height: 65px;
+      color: #fff;
+      font-size: 26px;
+      background: #5e7ed0;
+    }
+  }
+  .show-all{
+    display: block;
+    width: 40%;
+    height: 68px;
+    text-align: center;
+    line-height: 68px;
+    color: #fff;
+    background: #5e7ed0;
+    margin: 30px auto ;
+  }
+  .three-video{
+    display: block;
+    width: 100%;
+  }
+  .three-list{
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .three-item{
+      display: block;
+      width: 210px;
+      img{
+        display: block;
+        width: 220px;
+        height: 220px;
+        object-fit: cover;
+      }
+      p{
+        margin-top: 10px;
+        text-align: center;
+        font-size: 28px;
+        height: 88px;
+        line-height: 44px;
+      }
+    }
+  }
+  .four-box{
+    width: 100%;
+    .four-title{
+      padding: 15px 30px;
+      font-size: 28px;
+      text-align: left;
+    }
+    .four-item-list{
       display: flex;
       align-items: center;
-      justify-content: center;
-
-      .mine-item {
-        width: 535px;
-        height: 400px;
-        position: relative;
-
-        .item-image {
-          object-fit: cover;
-          width: 535px;
-          height: 400px;
-        }
-
-        .item-title {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          padding: 0 10px;
-          text-align: center;
-          font-size: 28px;
-          color: #ffffff;
-          width: 100%;
-          height: 52px;
-          line-height: 52px;
-          background-color: #00000055;
+      flex-wrap: wrap;
+      padding: 15px 30px;
+      video{
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      img{
+        display: block;
+        width: 220px;
+        height: 220px;
+        object-fit: cover;
+        margin: 0 13px 13px 0;
+        &:nth-child(3n){
+          margin-right: 0;
         }
       }
     }
   }
-  .case-item{
-    display: block;
-    margin: 10px 30px;
-    padding: 20px 10px;
-    border-radius: 5px;
-    border: 1px solid #c70005;
-    background: #fff;
-    width: 690px;
-    h3{
-      font-size: 32rpx;
-      width: 650px;
-      height: 40px;
-      line-height: 40px;
-      margin-bottom: 20px;
-    }
-    >div{
-      height: 80px;
-      width: 100%;
-    }
-  }
-  .more{
-    display: block;
-    width: 200px;
-    height: 60px;
-    margin: 20px auto;
-    text-align: center;
-    line-height: 60px;
-    background: #c70005;
-    color: #ffd01e;
-    border-radius: 10px;
-  }
+
 }
 </style>

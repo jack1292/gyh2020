@@ -3,35 +3,35 @@
     <router-link to="/Content/special1" class="special-item">
       <img src="../../assets/img/special1.jpg" alt="">
       <div>
-        <p>党的建设</p>
+        <p>党的建设专题</p>
         <span>点击查看</span>
       </div>
     </router-link>
     <router-link to="/Content/special2" class="special-item">
       <img src="../../assets/img/special2.jpg" alt="">
       <div>
-        <p>脱贫攻坚</p>
+        <p>脱贫攻坚专题</p>
         <span>点击查看</span>
       </div>
     </router-link>
     <router-link to="/Content/special3" class="special-item">
       <img src="../../assets/img/special3.jpg" alt="">
       <div>
-        <p>社会心理</p>
+        <p>社会心理专题</p>
         <span>点击查看</span>
       </div>
     </router-link>
     <router-link to="/Content/special4" class="special-item">
       <img src="../../assets/img/special4.jpg" alt="">
       <div>
-        <p>公益慈善与志愿服务</p>
+        <p>公益慈善与志愿服务专题</p>
         <span>点击查看</span>
       </div>
     </router-link>
     <router-link to="/Content/special5" class="special-item">
       <img src="../../assets/img/special5.jpg" alt="">
       <div>
-        <p>防控疫情</p>
+        <p>防控疫情专题</p>
         <span>点击查看</span>
       </div>
     </router-link>
@@ -45,28 +45,28 @@
     <router-link to="/Content/special7" class="special-item">
       <img src="../../assets/img/special7.jpg" alt="">
       <div>
-        <p>行业治理</p>
+        <p>行业治理专题</p>
         <span>点击查看</span>
       </div>
     </router-link>
     <router-link to="/Content/special8" class="special-item">
       <img src="../../assets/img/special8.jpg" alt="">
       <div>
-        <p>科技创新</p>
+        <p>科技创新专题</p>
         <span>点击查看</span>
       </div>
     </router-link>
     <router-link to="/Content/special9" class="special-item">
       <img src="../../assets/img/special9.jpg" alt="">
       <div>
-        <p>对外交流</p>
+        <p>对外交流交往专题</p>
         <span>点击查看</span>
       </div>
     </router-link>
     <router-link to="/Content/special10" class="special-item">
       <img src="../../assets/img/special10.jpg" alt="">
       <div>
-        <p>文化建设</p>
+        <p>文化建设专题</p>
         <span>点击查看</span>
       </div>
     </router-link>

@@ -1,7 +1,7 @@
 <template>
   <div class="warrper">
     <div class="container">
-      <video class="video" controls src="http://gyhfile.shzzfw.com/%E5%AF%B9%E5%A4%96%E4%BA%A4%E6%B5%81%E4%BA%A4%E5%BE%80.mp4" poster="../../../assets/img/csFeng.png"></video>
+      <video class="video" controls src="http://gyhfile.shzzfw.com/zt9.mp4" poster="../../../assets/img/csFeng.png"></video>
       <div class="classify-title">
         <div class="chinese">专题介绍</div>
       </div>

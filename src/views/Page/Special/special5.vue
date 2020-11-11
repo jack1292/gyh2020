@@ -8,7 +8,7 @@
     <div class="desc-container">
       <img src="../../../assets/img/special_desc5.png"/>
       <div class="video-container">
-        <video class="video" controls src="http://gyhfile.shzzfw.com/%E7%96%AB%E6%83%85%E9%98%B2%E6%8E%A7.mp4" poster="../../../assets/img/csFeng.png"></video>
+        <video class="video" controls src="http://gyhfile.shzzfw.com/zt5.mp4" poster="../../../assets/img/csFeng.png"></video>
       </div>
     </div>
     <div class="classify-title">

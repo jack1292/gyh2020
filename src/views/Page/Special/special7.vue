@@ -1,6 +1,6 @@
 <template>
   <div class="warrper">
-    <video class="video" controls src="http://gyhfile.shzzfw.com/%E8%A1%8C%E4%B8%9A%E6%B2%BB%E7%90%86.mp4"
+    <video class="video" controls src="http://gyhfile.shzzfw.com/zt7.mp4"
            poster="../../../assets/img/csFeng.png"></video>
     <div class="classify-title">
       <div class="eng">SPECIAL INTRODUCTION</div>

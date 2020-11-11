@@ -3,7 +3,7 @@
 
     <div class="desc-container">
       <div class="video-container">
-        <video class="video" controls src="http://gyhfile.shzzfw.com/%E5%85%AC%E7%9B%8A%E6%85%88%E5%96%84%E5%BF%97%E6%84%BF%E6%9C%8D%E5%8A%A1.mp4" poster="../../../assets/img/csFeng.png"></video>
+        <video class="video" controls src="http://gyhfile.shzzfw.com/zt4.mp4" poster="../../../assets/img/csFeng.png"></video>
       </div>
       <div class="desc">
         <p>

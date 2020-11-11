@@ -11,7 +11,7 @@
       </div>
       <div class="video-container">
         <img src="../../../assets/img/special_video10.png"/>
-        <video class="video" controls src="http://gyhfile.shzzfw.com/%E6%96%87%E5%8C%96%E5%BB%BA%E8%AE%BE%E6%94%B93.mp4" poster="../../../assets/img/csFeng.png"></video>
+        <video class="video" controls src="http://gyhfile.shzzfw.com/zt10.mp4" poster="../../../assets/img/csFeng.png"></video>
       </div>
 
       <div class="mine-container">

@@ -1,7 +1,7 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <div class="warrper">
     <video class="video" controls
-           src="http://gyhfile.shzzfw.com/%E5%85%9A%E7%9A%84%E5%BB%BA%E8%AE%BE%EF%BC%88%E5%8A%A0LOGO%EF%BC%89.mp4"
+           src="http://gyhfile.shzzfw.com/zt1.mp4"
            poster="../../../assets/img/csFeng.png"></video>
     <div class="classify-title">专题简介</div>
     <div class="desc">

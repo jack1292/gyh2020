@@ -47,3 +47,23 @@ export const dianzhanAdd = (id,type) => get('/api/thefront/addNum', {id,type})
 * 送花
 * */
 export const songhuaAdd = (id,type) => get('/api/thefront/addNum', {id,type})
+
+
+/*
+* 获取社会心里站点建设
+* */
+
+export const addressList = (area_id) => get('/api/special/sociology_web_query', {area_id})
+
+/*
+* 获取科技创新
+* */
+
+export const getKeji = () => get('/api/special/keji_query', {})
+
+
+/*
+* 获取科技创新
+* */
+
+export const getKejiDetail = (id,type,sts) => get('/api/special/keji_detail', {id,type,sts})

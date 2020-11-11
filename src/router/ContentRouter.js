@@ -140,6 +140,20 @@ const ContentRouter = [
     component: () => import('../views/Page/specialDetail'),
   },
   {
+    path: 'specialDetail2',
+    meta: {
+      title: '详情',
+    },
+    component: () => import('../views/Page/specialDetail2'),
+  },
+  {
+    path: 'specialDetail3',
+    meta: {
+      title: '详情',
+    },
+    component: () => import('../views/Page/specialDetail3'),
+  },
+  {
     path: 'addressList',
     meta: {
       title: '站点建设详情',
