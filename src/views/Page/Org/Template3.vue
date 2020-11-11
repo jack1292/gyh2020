@@ -13,7 +13,7 @@
             </div>
             <img :src="organization[0].img_url" alt="">
             <div class="BannerBox">
-                <div class="bannerBtn1">
+                <div class="bannerBtn1" @click="showMessage = true">
                     <img src="../../../assets/img/wenziqiashang.png" alt="">文字洽商
                 </div>
                 <a :href="'tel:'+apply_info.phone" class="bannerBtn2">
@@ -26,7 +26,6 @@
             <div class="org-desc">
                 <p>{{ userinfo.name }} ，
                     {{ userinfo.chengli_time }} 在 {{ userinfo.administration }} 登记成立，
-                  <span v-if="userinfo.registered_capital">注册资金 {{ userinfo.registered_capital }} 元，</span>
                     注册资金 {{ userinfo.registered_capital }} 元，
                     法定代表人/负责人是 {{ userinfo.legal_person }} 。
                     秘书处位于 {{ apply_info.secretariat_address }} ，
@@ -117,18 +116,23 @@
             <template class="title" v-slot:cover>{{previewTitle}}</template>
         </van-image-preview>
         <share :showShare="showShare" @setShare="setShare"></share>
+        <message :show="showMessage" :id="id" @setMessage="setMessage"></message>
     </div>
 </template>
 
 <script>
     import {getInstitutionInfo} from '@/api'
     import Share from "../../Components/Share.vue";
+    import Message from "../../Components/Message.vue";
     export default {
-        components: {Share},
+        components: {
+            Message,
+            Share},
         name: "Template3",
         data() {
             return {
                 userinfo: {
+                    id:'',
                     "phone": '',
                     "name": '',
                     "chengli_time": '',
@@ -204,11 +208,13 @@
                     touchRatio: 0.2,
                     slideToClickedSlide: true
                 },
-                showShare: false
+                showShare: false,
+                showMessage: false
             }
         },
         created() {
             if (this.$route.query.id) {
+                this.id = this.$route.query.id
                 this.getInstitutionInfo()
             }
 
@@ -258,6 +264,9 @@
             },
             setShare(state){
                 this.showShare = state
+            },
+            setMessage(state){
+                this.showMessage = state
             }
         },
         mounted() {

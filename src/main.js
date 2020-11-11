@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import  plugin from './plugin/index'
-import { ImagePreview,Tabbar, TabbarItem,Button,Cell,Tab,Tabs , CellGroup,Overlay,Step, Steps,Swipe, SwipeItem,List } from 'vant';
+import { ImagePreview,Tabbar, TabbarItem,Button,Cell,Tab,Tabs,Dialog ,Field, CellGroup,Overlay,Step, Steps,Swipe, SwipeItem,List } from 'vant';
 import './assets/css/reset.css'
 import './assets/font/iconfont.css'
 import 'swiper/dist/css/swiper.css'
@@ -29,6 +29,8 @@ Vue.use(Swipe);
 Vue.use(SwipeItem);
 Vue.use(Tab);
 Vue.use(Tabs);
+Vue.use(Dialog);
+Vue.use(Field);
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 Vue.use(plugin)
 Vue.config.productionTip = false

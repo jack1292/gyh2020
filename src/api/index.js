@@ -154,3 +154,9 @@ export const queryGoodsList = (id,page,limit) => get('/api/Consume/query', {id,p
 * @constructor jack
 * */
 export const getCharitableDetail = (id) => get('/api/Charitable/detail', {id})
+
+/*
+* 留言
+* @constructor jack
+* */
+export const addMessage = (user_id,name,tel,org_name,content) => get('/api/Organization/addMessage', {user_id,name,tel,org_name,content})
