@@ -25,7 +25,8 @@
             </div>
             <div class="org-desc">
                 <p>{{ userinfo.name }} ，
-                    于 {{ userinfo.chengli_time }} 在 {{ userinfo.administration }} 登记成立，
+                    {{ userinfo.chengli_time }} 在 {{ userinfo.administration }} 登记成立，
+                  <span v-if="userinfo.registered_capital">注册资金 {{ userinfo.registered_capital }} 元，</span>
                     注册资金 {{ userinfo.registered_capital }} 元，
                     法定代表人/负责人是 {{ userinfo.legal_person }} 。
                     秘书处位于 {{ apply_info.secretariat_address }} ，

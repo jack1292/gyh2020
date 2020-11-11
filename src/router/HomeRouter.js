@@ -39,6 +39,13 @@ const HomeRouter = [
         component: () => import('../views/Page/orgOtherList'),
     },
     {
+        path: 'orgOtherList2',
+        meta: {
+            title: '2020北京公益慈善汇展-组织展',
+        },
+        component: () => import('../views/Page/orgOtherList2'),
+    },
+    {
         path: 'jd',
         meta: {
             title: '2020北京公益慈善汇展-组织展',
