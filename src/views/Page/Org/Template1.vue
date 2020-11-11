@@ -37,7 +37,7 @@
                 联系电话：{{apply_info.phone}} ，
                 邮箱： {{apply_info.email}}。</p>
             <div class="BannerBox">
-                <div class="bannerBtn1">
+                <div class="bannerBtn1" @click="showMessage = true">
                     <img src="../../../assets/img/wenziqiashang.png" alt="">文字洽商
                 </div>
                 <a :href="'tel:'+apply_info.phone" class="bannerBtn2">
@@ -108,6 +108,7 @@
             <template class="title" v-slot:cover>{{previewTitle}}</template>
         </van-image-preview>
         <share :showShare="showShare" @setShare="setShare"></share>
+        <message :show="showMessage" :id="id" @setMessage="setMessage"></message>
     </div>
 </template>
 
@@ -115,12 +116,16 @@
     import {getInstitutionInfo} from '@/api'
     import {share} from '@/tools/share'
     import Share from "../../Components/Share.vue";
+    import Message from "../../Components/Message.vue";
 
     export default {
-        components: {Share},
+        components: {
+            Message,
+            Share},
         name: "Template1",
         data() {
             return {
+                id:'',
                 userinfo: {
                     "phone": '',
                     "name": '',
@@ -171,11 +176,13 @@
                 startPosition: 0,
                 previewTitle: '',
                 show: false,
-                showShare: false
+                showShare: false,
+                showMessage: false
             }
         },
         created() {
             if (this.$route.query.id) {
+                this.id = this.$route.query.id
                 this.getInstitutionInfo()
             }
 
@@ -221,6 +228,9 @@
             },
             setShare(state){
                 this.showShare = state
+            },
+            setMessage(state){
+                this.showMessage = state
             }
         }
     }

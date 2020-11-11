@@ -1,21 +1,27 @@
 <template>
-  <div>
-    <router-view/>
-  </div>
+    <div class="warpper">
+        <headernav></headernav>
+        <router-view/>
+    </div>
 </template>
 
 <script>
 
-export default {
-  name: 'Content',
-  components: {},
-  data(){
-    return {
+    import headernav from './Components/HeaderNav'
 
+    export default {
+        name: 'Content',
+        components: {
+            headernav
+        },
+        data() {
+            return {}
+        }
     }
-  }
-}
 </script>
 
 <style scoped lang="scss">
+    .warpper {
+        padding-top: 88px;
+    }
 </style>

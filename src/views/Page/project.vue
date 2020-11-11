@@ -8,6 +8,7 @@
       <router-link class="project-item" :to="'/Content/projectDetail?id=' + item.id" v-for="(item,index) in list"
                    :key="index">
         <div class="project-img">
+          <img class="item-tag" src="../../assets/img/img_tuijian.png" v-if="item.expert_top ===1 "/>
           <img :src="item.thumb" alt="">
         </div>
         <div class="project-name">
@@ -127,7 +128,15 @@ export default {
         height: 120px;
         margin-right: 20px;
         overflow: hidden;
-
+        position: relative;
+        .item-tag {
+          width: 160px;
+          height: 160px;
+          position: absolute;
+          right: -56px;
+          top: -56px;
+          transform: scale(0.6);
+        }
         img {
           display: block;
           width: 180px;

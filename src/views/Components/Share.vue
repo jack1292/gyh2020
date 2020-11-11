@@ -1,6 +1,6 @@
 <template>
     <div>
-        <van-overlay :show="showShare" @click="hide" :z-index="20">
+        <van-overlay  :show="showShare" @click="hide" :z-index="9999">
             <div class="share-container">
                 <img src="../../assets/img/img_share_arrow.png"/>
                 <div>
