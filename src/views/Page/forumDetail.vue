@@ -3,9 +3,10 @@
     <div class="forum-video" v-if="detail">
       <div class="video-box">
         <span v-if="detail.current === 2" class="chongbo">重播</span>
+        <span v-if="detail.current === 1 && state" class="zhibo" @click="playVideo">观看直播</span>
         <img :src="detail.thumb" alt="" class="thumb" v-if="detail.current === 0">
-        <video :src="detail.url" :controls="detail.current === 2" :poster="detail.thumb" v-else></video>
-        <div v-if="detail.current !== 0" class="liwu-box">
+        <video :src="detail.url" ref="video" :controls="detail.current === 2" :poster="detail.thumb" v-else></video>
+        <div v-if="detail.current === 2 || (detail.current === 1 && !state)" class="liwu-box">
           <div class="xinBGC" :class="{active:dianzanState}">
             <img src="../../assets/img/xin1.png" alt="" @click="dianzan">
             <p>{{ dianzhanNum }}</p>
@@ -55,6 +56,7 @@
                 songhuaState: false,
                 songhuaNum:0,
                 active: 0,
+                state:true
             }
         },
         created() {
@@ -83,6 +85,10 @@
                 }, 2000)
                 let _data = await songhuaAdd(this.id,2)
                 this.songhuaNum = _data.data.num
+            },
+            playVideo() {
+                this.state = false
+                this.$refs['video'].play()
             }
         }
     }
@@ -152,6 +158,20 @@
           left: 20px;
           font-size: 36px;
           color: #fff;
+        }
+        .zhibo {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          font-size: 32px;
+          width: 200px;
+          height: 70px;
+          line-height: 70px;
+          text-align: center;
+          color: #fff;
+          background: #e3422f;
+          z-index: 777;
         }
         .thumb {
           position: absolute;
