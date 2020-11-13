@@ -402,7 +402,7 @@
 <style scoped lang="scss">
     .fl-container {
         width: 100%;
-        background: #fdf0e9 url(../../assets/img/funv.png) no-repeat;
+        background: #fdf0e9 url(http://shzzpt.org.cn/web/assets/img/funv.png) no-repeat;
         background-size: 100%;
         padding: 250px 24px 20px;
         .fl-info {

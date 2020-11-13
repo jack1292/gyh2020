@@ -35,7 +35,7 @@
         data() {
             return {
                 show: false,
-                isLogin: this.$store.state.user
+                isLogin: this.$store.state.user && this.$store.state.user.token
             }
         }
     }

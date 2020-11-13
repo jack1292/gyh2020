@@ -215,6 +215,12 @@
                         padding: 0 12px;
                         font-size: 28px;
                     }
+                    .code-text{
+                        font-size: 26px;
+                        color: #c51119;
+                        flex: 1;
+                        text-align: right;
+                    }
                     .code-img {
                         flex-shrink: 0;
                         /*width: 139px;*/

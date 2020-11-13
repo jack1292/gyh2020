@@ -381,7 +381,7 @@ export default {
         }
         p {
           padding: 10px;
-          font-size: 24px;
+          font-size: 26px;
           line-height: 34px;
           color: #333333;
         }

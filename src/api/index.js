@@ -1,5 +1,5 @@
 // import {get, post, qspost, put, deletefn} from '@/api/axios'
-import {get,post} from '@/api/axios'
+import {get,qspost} from '@/api/axios'
 
 
 
@@ -62,6 +62,17 @@ export const getInstitutionInfo = (institution_id) => get('/home/Institutions/ge
 * paranm limit{number}:每页数量
 * */
 export const getProjectList = (page, limit, keyword) => get('/api/Projectinfo/index', {
+  page,
+  limit,
+  keyword
+})
+/*
+* 获取项目展列表
+* @constructor jack
+* paranm page{number}:页码
+* paranm limit{number}:每页数量
+* */
+export const query_expert_top = (page, limit, keyword) => get('/api/projectinfo/query_expert_top', {
   page,
   limit,
   keyword
@@ -166,17 +177,27 @@ export const addMessage = (user_id,name,tel,org_name,content) => get('/api/Organ
 * 积分
 * @constructor jack
 * */
-export const addIntegral = (type,video_id,token) => get('/home/info/addIntegral', {type,video_id,token})
+export const zanIntegral = (other_user_id,token) => qspost('index.php/api/Organization/zanIntegral', {other_user_id,token})
+/*
+* 积分
+* @constructor jack
+* */
+export const addIntegral = (type,video_id,token) => qspost('/home/info/addIntegral', {type,video_id,token})
 /*
 * 登录
 * @constructor jack
 * */
-export const login = (user_name,pass) => post('/index.php/home/User/login', {user_name,pass})
+export const login = (user_name,pass) => qspost('/index.php/home/User/login', {user_name,pass})
 /*
 * 登录
 * @constructor jack
 * */
-export const send_phone_code = (phone) => post('/index.php/home/User/send_phone_code', {phone})
+export const showIntegral = (token) => qspost('/index.php/home/info/showIntegral', {token})
+/*
+* 登录
+* @constructor jack
+* */
+export const send_phone_code = (phone) => qspost('/index.php/home/User/send_phone_code', {phone})
 /*
 * 登录
 * @constructor jack
@@ -185,7 +206,7 @@ export const forget_pass = (user_name ,
     phone ,
     code ,
     new_pass ,
-    rel_new_pass) => post('/index.php/Home/User/forget_pass', {user_name ,
+    rel_new_pass) => qspost('/index.php/Home/User/forget_pass', {user_name ,
     phone ,
     code ,
     new_pass ,

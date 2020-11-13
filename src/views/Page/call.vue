@@ -77,6 +77,7 @@ export default {
       display: block;
       width: 120px;
       height: 72px;
+      flex-shrink: 0;
       text-align: right;
       line-height: 72px;
     }

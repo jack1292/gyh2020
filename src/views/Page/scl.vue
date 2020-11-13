@@ -4,7 +4,7 @@
         <div class="scl-chinese">机构简介</div>
         <div class="scl-eng">INTRODUCE</div>
         <video class="scl-video"
-               src="http://gyhfile.shzzfw.com/%E6%85%88%E5%B1%95%E8%81%941027%EF%BC%88%E8%A7%86%E9%A2%91%E5%90%8E%E7%BB%AD%E8%BF%98%E4%BC%9A%E6%9C%89%E6%9B%B4%E6%94%B9%EF%BC%8C%E6%82%A8%E5%85%88%E4%BC%A0%E4%B8%8A%EF%BC%89.mp4"
+               src="http://gyhfile.shzzfw.com/%E6%85%88%E5%B1%95%E8%81%94112.mp4"
                type="video/mp4" controls poster="../../assets/img/cishan.jpg"></video>
 
         <div class="scl-desc">

@@ -3,12 +3,12 @@
 
 
     <div class="desc">
-      新冠肺炎疫情发生以来，北京市社会组织认真学习习近平总书记重要指示精神，发挥资源动员、行业引领、专业技术、志愿服务等特长，积极有序参与疫情防控工作，以实际行动体现社会组织“服务国家、服务首都、服务社会、服务居民”的责任和担当，展现出社会组织独特优势，充分彰显了首都社会组织的责任担当和大爱情怀。在抗击新冠肺炎的斗争中，北京市社会组织立足基层需求、结合自身优势，用实际行动履行社会责任，成为疫情防控阻击战中一支不可或缺的重要力量。
+      新冠肺炎疫情发生以来，北京市社会组织认真学习习近平总书记重要指示精神，发挥资源动员、行业引领、专业技术、志愿服务等特长，积极有序参与疫情防控工作，以实际行动体现社会组织“服务国家、服务社会、服务群众、服务行业”的责任和担当，展现出社会组织独特优势，充分彰显了首都社会组织的责任担当和大爱情怀。在抗击新冠肺炎的斗争中，北京市社会组织立足基层需求、结合自身优势，用实际行动履行社会责任，成为疫情防控阻击战中一支不可或缺的重要力量。
     </div>
     <div class="desc-container">
       <img src="../../../assets/img/special_desc5.png"/>
       <div class="video-container">
-        <video class="video" controls src="http://gyhfile.shzzfw.com/zt5.mp4" poster="../../../assets/img/csFeng.png"></video>
+        <video class="video" controls src="http://gyhfile.shzzfw.com/%E7%96%AB%E6%83%85%E9%98%B2%E6%8E%A7112.mp4" poster="../../../assets/img/csFeng.png"></video>
       </div>
     </div>
     <div class="classify-title">

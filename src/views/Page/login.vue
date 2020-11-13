@@ -74,14 +74,13 @@
                     this.submitState = false
                     return
                 }
+                this.submitState = false
                 let _data = await login(this.account,this.password)
                 if (_data.status===200){
                     this.$store.state.user = _data.data
-                    this.submitState = false
-                    this.$router.push('/home')
+                    window.location.href='http://shzzpt.org.cn/m/#/Home/mine'
                 }else {
                     Toast(_data.msg)
-                    this.submitState = false
                 }
             },
             /*

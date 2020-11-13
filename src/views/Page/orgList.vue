@@ -43,7 +43,7 @@ export default {
   created() {
     if(this.$route.query.keyword) this.keyword = this.$route.query.keyword,this.state = 2
     if(this.$route.query.area) this.area = this.$route.query.area,this.state = 3
-    if(this.$route.query.type) this.type = this.$route.query.type
+    if(this.$route.query.type) this.type = this.$route.query.type,this.state = 1
     this.getList()
   },
   methods: {

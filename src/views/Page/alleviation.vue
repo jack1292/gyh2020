@@ -39,7 +39,7 @@
             <div class="alleviation-title">公益产品</div>
             <div class="alleviation-list">
                 <div class="item-classify" v-for="(item,index) in list" :key="index">
-                    <div class="classify" v-if="item.list.length>0" :style="'background-image: url(/m/img/q'+ (index+11) +'.jpg);background-size: 100%;'">
+                    <div class="classify" v-if="item.list.length>0" :style="'background-image: url(http://shzzpt.org.cn/web/assets/images/q'+ (index+12) +'.jpg);background-size: 150%;'">
                         <div class="classify-name">{{item.name}}
                         </div>
                         <router-link :to="'goods?id='+item.id" class="classify-more">查看更多</router-link>
@@ -74,43 +74,43 @@
                 areas: [
                     {
                         title: '西藏拉萨馆',
-                        image: '/img/q2.jpg'
+                        image: 'http://shzzpt.org.cn/web/assets/images/q2.jpg'
                     },
                     {
                         title: '新疆馆',
-                        image: '/img/q3.jpg'
+                        image: 'http://shzzpt.org.cn/web/assets/images/q3.jpg'
                     },
                     {
                         title: '青海玉树馆',
-                        image: ' /img/q4.jpg'
+                        image: ' http://shzzpt.org.cn/web/assets/images/q4.jpg'
                     },
                     {
                         title: '内蒙古馆',
-                        image: ' /img/q5.jpg'
+                        image: ' http://shzzpt.org.cn/web/assets/images/q5.jpg'
                     },
                     {
                         title: '河南馆',
-                        image: ' /img/q6.jpg'
+                        image: ' http://shzzpt.org.cn/web/assets/images/q6.jpg'
                     },
                     {
                         title: '河北保定馆',
-                        image: ' /img/q7.jpg'
+                        image: 'http://shzzpt.org.cn/web/assets/images/q7.jpg'
                     },
                     {
                         title: '河北承德馆',
-                        image: ' /img/q8.jpg'
+                        image: 'http://shzzpt.org.cn/web/assets/images/q8.jpg'
                     },
                     {
                         title: '河北张家口馆',
-                        image: ' /img/q9.jpg'
+                        image: 'http://shzzpt.org.cn/web/assets/images/q9.jpg'
                     },
                     {
                         title: '湖北馆',
-                        image: ' /img/q10.jpg'
+                        image: 'http://shzzpt.org.cn/web/assets/images/q10.jpg'
                     },
                     {
                         title: '湖北巴东馆',
-                        image: ' /img/q11.jpg'
+                        image: 'http://shzzpt.org.cn/web/assets/images/q11.jpg'
                     }]
             }
         },
@@ -163,20 +163,18 @@
         .bank-container {
             display: flex;
             flex-direction: row;
+            justify-content: space-between;
             margin-top: 20px;
             width: 100%;
             .bank-item {
-                width: 50%;
+                width: 49%;
                 display: flex;
                 flex-direction: column;
                 background: #ffffff;
                 padding: 24px;
-                &:last-child {
-                    margin-left: 12px;
-                }
                 .bank-more {
                     color: #e2412e;
-                    font-size: 16px;
+                    font-size: 26px;
                     margin-top: 12px;
                     align-self: flex-end;
                 }
@@ -186,7 +184,7 @@
                 }
                 .bank-content {
                     color: #666666;
-                    font-size: 16px;
+                    font-size: 26px;
                     width: 100%;
                     margin-top: 15px;
                     display: -webkit-box;
@@ -216,7 +214,7 @@
                 }
                 .area-title {
                     text-align: center;
-                    font-size: 18px;
+                    font-size: 22px;
                     color: #666666;
                 }
             }
@@ -250,7 +248,7 @@
                         .classify-name {
                             background: #ffffff;
                             color: #e63520;
-                            font-size: 22px;
+                            font-size: 26px;
                             font-weight: bold;
                             height: 40px;
                             margin-left: 30px;
@@ -258,7 +256,7 @@
                         }
                         .classify-more {
                             color: #e2412e;
-                            font-size: 16px;
+                            font-size: 26px;
                             background: #ffffff;
                         }
                     }

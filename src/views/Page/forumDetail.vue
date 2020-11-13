@@ -3,7 +3,7 @@
     <div class="forum-video" v-if="detail">
       <div class="video-box">
         <span v-if="detail.current === 2" class="chongbo">重播</span>
-        <span v-if="detail.current === 1 && state" class="zhibo" @click="playVideo">观看直播</span>
+        <span v-if="detail.current === 1 && state" class="zhibo" @click="playVideo">观看首播</span>
         <img :src="detail.thumb" alt="" class="thumb" v-if="detail.current === 0">
         <video :src="detail.url" ref="video" :controls="detail.current === 2" :poster="detail.thumb" v-else></video>
         <div v-if="detail.current === 2 || (detail.current === 1 && !state)" class="liwu-box">
@@ -56,12 +56,16 @@
                 songhuaState: false,
                 songhuaNum:0,
                 active: 0,
-                state:true
+                state:true,
+                timeOut:null
             }
         },
         created() {
             this.id = this.$route.query.id
             this.init()
+        },
+        beforeDestroy(){
+            clearTimeout(this.timeOut)
         },
         methods: {
             async init() {
@@ -69,7 +73,7 @@
                 this.detail = _forum.data
                 this.dianzhanNum = _forum.data.zan_num
                 this.songhuaNum = _forum.data.flower_num
-                if (this.detail.current === 1){
+                if (this.detail.current !== 0){
                     this.setTimeOut()
                 }
             },
@@ -96,7 +100,7 @@
             setTimeOut(){
                 setTimeout(function () {
                     this.addIntegral()
-                }, 30000)
+                }, 1000*60*30)
             },
             async addIntegral(){
                 let _data = await addIntegral(1,this.id,this.$store.state.user)
@@ -124,6 +128,7 @@
         .member-img{
           width: 130px;
           height: 180px;
+          object-fit: scale-down;
         }
         .member-info{
           display: flex;

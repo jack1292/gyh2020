@@ -30,16 +30,16 @@
         </div>
 
         <div class="org-address">
-            <router-link to="/Home/orgList?area=0" class="address-item">东城区</router-link>
-            <router-link to="/Home/orgList?area=1" class="address-item">西城区</router-link>
-            <router-link to="/Home/orgList?area=2" class="address-item">朝阳区</router-link>
-            <router-link to="/Home/orgList?area=3" class="address-item">海淀区</router-link>
-            <router-link to="/Home/orgList?area=4" class="address-item">丰台区</router-link>
-            <router-link to="/Home/orgList?area=5" class="address-item">石景山区</router-link>
-            <router-link to="/Home/orgList?area=6" class="address-item">门头沟区</router-link>
-            <router-link to="/Home/orgList?area=7" class="address-item">房山区</router-link>
-            <router-link to="/Home/orgList?area=8" class="address-item">通州区</router-link>
-            <router-link to="/Home/orgList?area=9" class="address-item">顺义区</router-link>
+            <router-link to="/Home/orgList?area=1" class="address-item">东城区</router-link>
+            <router-link to="/Home/orgList?area=2" class="address-item">西城区</router-link>
+            <router-link to="/Home/orgList?area=3" class="address-item">朝阳区</router-link>
+            <router-link to="/Home/orgList?area=4" class="address-item">海淀区</router-link>
+            <router-link to="/Home/orgList?area=5" class="address-item">丰台区</router-link>
+            <router-link to="/Home/orgList?area=6" class="address-item">石景山区</router-link>
+            <router-link to="/Home/orgList?area=7" class="address-item">门头沟区</router-link>
+            <router-link to="/Home/orgList?area=8" class="address-item">房山区</router-link>
+            <router-link to="/Home/orgList?area=9" class="address-item">通州区</router-link>
+            <router-link to="/Home/orgList?area=10" class="address-item">顺义区</router-link>
             <router-link to="/Home/orgList?area=11" class="address-item">昌平区</router-link>
             <router-link to="/Home/orgList?area=12" class="address-item">大兴区</router-link>
             <router-link to="/Home/orgList?area=13" class="address-item">怀柔区</router-link>

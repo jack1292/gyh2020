@@ -1,8 +1,8 @@
-import {get } from '@/api/axios'
+import {get,qspost } from '@/api/axios'
 
 var wx = require("weixin-js-sdk");
 // type  true : 发起请求 提交用户信息+加分   false: 正常转发不处理
-export function share(title, desc, img, url) {
+export function share(title, desc, img, url,id) {
     //微信分享
     var param = {
         url: encodeURIComponent(window.location.href.split("#")[0])
@@ -37,7 +37,9 @@ export function share(title, desc, img, url) {
                             type: "", // 分享类型,music、video或link，不填默认为link
                             dataUrl: "", // 如果type是music或video，则要提供数据链接，默认为空
                             success: function() {
-
+                               if (id) {
+                                   qspost('/api/Organization/shareIntegral',{user_id:id})
+                               }
                             }
                         });
                         wx.onMenuShareTimeline({
@@ -46,7 +48,9 @@ export function share(title, desc, img, url) {
                             link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             imgUrl: img, // 分享图标
                             success: function() {
-
+                                if (id) {
+                                    qspost('/api/Organization/shareIntegral',{user_id:id})
+                                }
                             }
                         });
                     }

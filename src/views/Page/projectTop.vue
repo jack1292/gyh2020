@@ -27,17 +27,14 @@
         <img src="../../assets/img/juzheng.png" alt="">
       </router-link>
     </div>
-    <router-link to="projectTop">
-      <img class="project-top" src="http://shzzpt.org.cn/web/assets/img/zjtuijian.png"/>
-    </router-link>
   </div>
 </template>
 
 <script>
-import {getProjectList} from "@/api";
+import {query_expert_top} from "@/api";
 
 export default {
-  name: "project",
+  name: "projectTop",
   data() {
     return {
       page: 1,
@@ -53,7 +50,7 @@ export default {
   },
   methods: {
     async init() {
-      let _data = await getProjectList(this.page, this.limit, this.keyword)
+      let _data = await query_expert_top(this.page, this.limit, this.keyword)
       if(this.page === 1) this.list = []
       this.list = [...this.list, ..._data.data.data]
       this.total = _data.data.total
@@ -79,12 +76,7 @@ export default {
   min-height: calc(100vh - 188px);
   padding-top: 30px;
 
-  .project-top{
-    position: fixed;
-    width: 170px;
-    bottom: 150px;
-    right: 20px;
-  }
+
   .search-box {
     display: flex;
     align-items: center;

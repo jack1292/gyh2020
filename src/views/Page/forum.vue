@@ -3,7 +3,7 @@
         <div class="forum-video" v-if="list.length>0">
             <div class="video-box">
                 <span v-if="list[chiose].current === 2" class="chongbo">重播</span>
-                <span v-if="list[chiose].current === 1 && state" class="zhibo" @click="playVideo">观看直播</span>
+                <span v-if="list[chiose].current === 1 && state" class="zhibo" @click="playVideo">观看首播</span>
                 <img :src="list[chiose].thumb" alt="" class="thumb" v-if="list[chiose].current === 0">
                 <video :src="list[chiose].url" ref="video" :controls="list[chiose].current === 2"
                        :poster="list[chiose].thumb" v-else></video>
@@ -87,10 +87,16 @@
         created() {
             this.init()
         },
+        beforeDestroy(){
+            clearTimeout(this.timeOut)
+        },
         methods: {
             async init() {
                 let _forum = await getForum()
                 this.list = _forum.data
+                if (this.list[this.chiose].current !== 0 && this.$store.state.user){
+                    this.setTimeOut()
+                }
 //                let _data = await getNewsList(1, 10, 1)
 //                _data.data.data.map(item => {
 //                    item.image = config.baseURL + item.image
@@ -119,7 +125,7 @@
                 if (index !==  this.chiose) {
                     this.chiose = index
                     this.state = true
-                    if (this.list[this.chiose].current === 1){
+                    if (this.list[this.chiose].current === 1 && this.$store.state.user){
                         this.setTimeOut()
                     }
                 }
@@ -129,15 +135,16 @@
                 this.$refs['video'].play()
             },
             setTimeOut(){
+                let that =this
                 if (this.timeOut){
                     clearTimeout(this.timeOut)
                 }
                 this.timeOut = setTimeout(function () {
-                    this.addIntegral()
-                }, 30000)
+                    that.addIntegral()
+                }, 1000*60*30)
             },
             async addIntegral(){
-               let _data = await addIntegral(1,this.list[this.chiose],this.$store.state.user)
+               let _data = await addIntegral(1,this.list[this.chiose].id,this.$store.state.user.token)
                 console.log(_data)
             }
         },

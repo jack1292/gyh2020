@@ -114,14 +114,17 @@
         </van-image-preview>
         <share :showShare="showShare" @setShare="setShare"></share>
         <message :show="showMessage" :id="id" @setMessage="setMessage"></message>
+        <img @click="zanIntegral" class="zan-icon" src="http://shzzpt.org.cn/gyh/img/dianzhan.cee3e850.png"/>
     </div>
 </template>
 
 <script>
-    import {getInstitutionInfo} from '@/api'
-     import {share} from '@/tools/share'
+    import {getInstitutionInfo,zanIntegral} from '@/api'
+    import {share} from '@/tools/share'
     import Share from "../../Components/Share.vue";
     import Message from "../../Components/Message.vue";
+    import {Toast} from "vant";
+
 
     export default {
         components: {
@@ -193,6 +196,12 @@
 
         },
         methods: {
+            async zanIntegral(){
+                let _data = await zanIntegral(this.id,this.$store.state.user? this.$store.state.user.token:'')
+                if (_data.status === 200){
+                    Toast('点赞成功')
+                }
+            },
             async getInstitutionInfo() {
 
                 let _data = await getInstitutionInfo(this.$route.query.id)
@@ -213,7 +222,7 @@
 
                 this.userinfo.conclusion = this.userinfo.conclusion ? this.userinfo.conclusion.split(';') : []
                 this.userinfo.year = this.userinfo.year ? this.userinfo.year.split(';') : []
-                share(this.userinfo.name, '欢迎查看' + this.userinfo.name + '的微店', this.apply_info.logo_url ? this.apply_info.logo_url : this.organization[0].img_url, window.location.href)
+                share(this.userinfo.name, '欢迎查看' + this.userinfo.name + '的微店', this.apply_info.logo_url ? this.apply_info.logo_url : this.organization[0].img_url, window.location.href,this.id)
 
             },
             toMienPreview(index) {
@@ -325,6 +334,7 @@
                         display: block;
                         width: 82px;
                         height: 82px;
+                        margin-left: -15px;
                     }
                 }
             }
@@ -366,10 +376,13 @@
                         margin-top: 6px;
                     }
                     .item-phone{
-                       font-size: 24px;
+                        font-size: 24px;
                         color: #c70005;
+                        line-height: 30px;
                         font-weight: bold;
+                        text-align: center;
                         margin-top: 6px;
+                        padding: 0 20px;
                     }
                 }
             }

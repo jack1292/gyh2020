@@ -88,6 +88,13 @@ const HomeRouter = [
         component: () => import('../views/Page/project'),
     },
     {
+        path: 'projectTop',
+        meta: {
+            title: '2020北京公益慈善汇展-项目展',
+        },
+        component: () => import('../views/Page/projectTop'),
+    },
+    {
         path: 'charitable',
         meta: {
             title: '2020北京公益慈善汇展-慈善展',
@@ -191,6 +198,13 @@ const HomeRouter = [
             title: '2020北京公益慈善汇展-忘记密码',
         },
         component: () => import('../views/Page/forget'),
+    },
+    {
+        path: 'mine',
+        meta: {
+            title: '2020北京公益慈善汇展-个人中心',
+        },
+        component: () => import('../views/Page/mine'),
     }
 ]
 export default HomeRouter
