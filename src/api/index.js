@@ -1,5 +1,5 @@
 // import {get, post, qspost, put, deletefn} from '@/api/axios'
-import {get} from '@/api/axios'
+import {get,post} from '@/api/axios'
 
 
 
@@ -161,3 +161,32 @@ export const getCharitableDetail = (id) => get('/api/Charitable/detail', {id})
 * @constructor jack
 * */
 export const addMessage = (user_id,name,tel,org_name,content) => get('/api/Organization/addMessage', {user_id,name,tel,org_name,content})
+
+/*
+* 积分
+* @constructor jack
+* */
+export const addIntegral = (type,video_id,token) => get('/home/info/addIntegral', {type,video_id,token})
+/*
+* 登录
+* @constructor jack
+* */
+export const login = (user_name,pass) => post('/index.php/home/User/login', {user_name,pass})
+/*
+* 登录
+* @constructor jack
+* */
+export const send_phone_code = (phone) => post('/index.php/home/User/send_phone_code', {phone})
+/*
+* 登录
+* @constructor jack
+* */
+export const forget_pass = (user_name ,
+    phone ,
+    code ,
+    new_pass ,
+    rel_new_pass) => post('/index.php/Home/User/forget_pass', {user_name ,
+    phone ,
+    code ,
+    new_pass ,
+    rel_new_pass })

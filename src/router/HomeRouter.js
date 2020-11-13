@@ -170,6 +170,27 @@ const HomeRouter = [
             title: '2020北京公益慈善汇展-联系我们',
         },
         component: () => import('../views/Page/call'),
+    },
+    {
+        path: 'mianze',
+        meta: {
+            title: '2020北京公益慈善汇展-免责声明',
+        },
+        component: () => import('../views/Page/mianze'),
+    },
+    {
+        path: 'login',
+        meta: {
+            title: '2020北京公益慈善汇展-登录',
+        },
+        component: () => import('../views/Page/login'),
+    },
+    {
+        path: 'forget',
+        meta: {
+            title: '2020北京公益慈善汇展-忘记密码',
+        },
+        component: () => import('../views/Page/forget'),
     }
 ]
 export default HomeRouter

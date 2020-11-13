@@ -42,7 +42,7 @@
 </template>
 
 <script>
-    import {getForumVideoDetail} from "@/api";
+    import {getForumVideoDetail,addIntegral} from "@/api";
     import {dianzhanAdd, songhuaAdd} from "@/api/special";
 
     export default {
@@ -69,6 +69,9 @@
                 this.detail = _forum.data
                 this.dianzhanNum = _forum.data.zan_num
                 this.songhuaNum = _forum.data.flower_num
+                if (this.detail.current === 1){
+                    this.setTimeOut()
+                }
             },
             async dianzan() {
                 this.dianzanState = true
@@ -89,6 +92,15 @@
             playVideo() {
                 this.state = false
                 this.$refs['video'].play()
+            },
+            setTimeOut(){
+                setTimeout(function () {
+                    this.addIntegral()
+                }, 30000)
+            },
+            async addIntegral(){
+                let _data = await addIntegral(1,this.id,this.$store.state.user)
+                console.log(_data)
             }
         }
     }

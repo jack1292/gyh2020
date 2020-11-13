@@ -36,38 +36,37 @@
                 </router-link>
             </div>
         </div>
-        <div class="news-box">
-            <h3 class="news-title">
-                <span>论坛资讯</span>
-                <router-link to="/Content/news" class="more">更多</router-link>
-            </h3>
-            <div class="news-list">
-                <router-link v-for="(item,index) in news" :key="index" class="news-item"
-                             :to="'/Content/newsDetail?id=' + item.id">
+        <!--<div class="news-box">-->
+            <!--<h3 class="news-title">-->
+                <!--<span>论坛资讯</span>-->
+                <!--<router-link to="/Content/news" class="more">更多</router-link>-->
+            <!--</h3>-->
+            <!--<div class="news-list">-->
+                <!--<router-link v-for="(item,index) in news" :key="index" class="news-item"-->
+                             <!--:to="'/Content/newsDetail?id=' + item.id">-->
 
-                    <div v-if="index === 0" class="frist">
-                        <div>
-                            <img :src="item.image" alt="">
-                            <p>{{ item.title }}</p>
-                        </div>
-                        <p class="desc">{{ item.desc }}</p>
-                    </div>
-                    <div v-else class="other">
-                        <img :src="item.image" alt="">
-                        <div>
-                            <h3>{{ item.title }}</h3>
-                            <p>{{ item.desc }}</p>
-                        </div>
-                    </div>
-                </router-link>
-            </div>
-        </div>
+                    <!--<div v-if="index === 0" class="frist">-->
+                        <!--<div>-->
+                            <!--<img :src="item.image" alt="">-->
+                            <!--<p>{{ item.title }}</p>-->
+                        <!--</div>-->
+                        <!--<p class="desc">{{ item.desc }}</p>-->
+                    <!--</div>-->
+                    <!--<div v-else class="other">-->
+                        <!--<img :src="item.image" alt="">-->
+                        <!--<div>-->
+                            <!--<h3>{{ item.title }}</h3>-->
+                            <!--<p>{{ item.desc }}</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</router-link>-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
 </template>
 
 <script>
-    import {getForum, getNewsList} from "@/api";
-    import config from "@/config";
+    import {getForum,addIntegral} from "@/api";
     import {dianzhanAdd, songhuaAdd} from "@/api/special";
 
     export default {
@@ -81,7 +80,8 @@
                 dianzhanNum: 0,
                 songhuaState: false,
                 songhuaNum: 0,
-                state:true
+                state:true,
+                timeOut:null
             }
         },
         created() {
@@ -91,11 +91,11 @@
             async init() {
                 let _forum = await getForum()
                 this.list = _forum.data
-                let _data = await getNewsList(1, 10, 1)
-                _data.data.data.map(item => {
-                    item.image = config.baseURL + item.image
-                })
-                this.news = [..._data.data.data, ..._data.data.data]
+//                let _data = await getNewsList(1, 10, 1)
+//                _data.data.data.map(item => {
+//                    item.image = config.baseURL + item.image
+//                })
+//                this.news = [..._data.data.data, ..._data.data.data]
                 this.dianzhanNum = this.list[0].zan_num
                 this.songhuaNum = this.list[0].flower_num
             },
@@ -116,12 +116,29 @@
                 this.songhuaNum = _data.data.num
             },
             selectVideo(index){
-                this.chiose = index
-                this.state = true
+                if (index !==  this.chiose) {
+                    this.chiose = index
+                    this.state = true
+                    if (this.list[this.chiose].current === 1){
+                        this.setTimeOut()
+                    }
+                }
             },
             playVideo() {
                 this.state = false
                 this.$refs['video'].play()
+            },
+            setTimeOut(){
+                if (this.timeOut){
+                    clearTimeout(this.timeOut)
+                }
+                this.timeOut = setTimeout(function () {
+                    this.addIntegral()
+                }, 30000)
+            },
+            async addIntegral(){
+               let _data = await addIntegral(1,this.list[this.chiose],this.$store.state.user)
+                console.log(_data)
             }
         },
         watch: {

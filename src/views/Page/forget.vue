@@ -10,21 +10,30 @@
                 <input class="input-content" v-model="account" autocomplete="on" placeholder="请输入机构名称"/>
             </div>
             <div class="login-input">
-                <div class="input-title">密码</div>
-                <input class="input-content" v-model="password" type="password" placeholder="请输入密码(初始登录密码:123456)"/>
+                <div class="input-title">手机号</div>
+                <input class="input-content" v-model="phone" autocomplete="on" placeholder="请输入手机号"/>
             </div>
             <div class="login-input">
                 <div class="input-title">验证码</div>
                 <div class="input-container">
-                    <input class="input-content2" maxlength="4" v-model="code" placeholder="请输入验证码"/>
-                    <div class="code-img" @click="refreshCode">
-                        <s-identify :identifyCode="identifyCode"></s-identify>
+                    <input class="input-content2" maxlength="4" v-model="smsCode" placeholder="请输入验证码"/>
+                    <div class="code-text" @click="sendCode">
+                        {{codeText}} <span v-if="typeof codeText === 'number'">秒后重新发送</span>
                     </div>
                 </div>
             </div>
-            <van-button round class="login-submit-btn" @click="login" :disabled="submitState">登 录</van-button>
-            <router-link to="forget" class="forget">
-                忘记密码？
+            <div class="login-input">
+                <div class="input-title">新密码</div>
+                <input class="input-content" v-model="newPass" type="password" placeholder="请输入新密码"/>
+            </div>
+            <div class="login-input">
+                <div class="input-title">确认密码</div>
+                <input class="input-content" v-model="rnewPass" type="password" placeholder="请输入确认密码"/>
+            </div>
+
+            <van-button round class="login-submit-btn" @click="setSubmit" :disabled="submitState">立即修改</van-button>
+            <router-link to="login" class="forget">
+                返回登录
             </router-link>
         </div>
         <div class="tag">公益汇聚力量      慈善人人参与</div>
@@ -32,76 +41,103 @@
 </template>
 
 <script>
-    import SIdentify from "../Components/identify.vue";
     import {Toast} from "vant";
-    import { login } from "@/api";
+    import {send_phone_code,forget_pass} from "@/api";
+
     export default {
-        components: {SIdentify},
+        components: {},
         name: "login",
         data() {
             return {
-                submitState: false,
                 account: '',
-                password: '',
-                code: '',
-                identifyCode: '',
-                identifyCodes: '123456789ABCDEFGHJKLMNPQRSTUVWXYZ',
+                phone: '',
+                smsCode: '',
+                newPass: '',
+                rnewPass: '',
+                codeText: '获取验证码', // 验证码文字
+                id: null, // 计时器id
+                timeId: null, // 一次性计时器id
+                submitState: false,
             }
         },
         created() {
-            this.refreshCode()
         },
         methods: {
-            async login(){
+            async setSubmit() {
                 this.submitState = true
                 if (!this.account) {
                     Toast('请输入机构名称')
                     this.submitState = false
                     return
                 }
-                if (!this.password) {
-                    Toast('请输入登录密码')
+                if (!this.phone) {
+                    Toast('请输入手机号')
                     this.submitState = false
                     return
                 }
-                if (!this.code) {
+                console.log(this.phone)
+                if (this.$tools.checkTel(this.phone)) {
+                    Toast('手机号格式错误，请确认')
+                    this.submitState = false
+                    return
+                }
+                if (!this.smsCode) {
                     Toast('请输入验证码')
                     this.submitState = false
                     return
                 }
-                if (this.code.toUpperCase() !== this.identifyCode) {
-                    Toast('验证码错误，请重新输入')
+                if (!this.newPass) {
+                    Toast('请输入新密码')
                     this.submitState = false
                     return
                 }
-                let _data = await login(this.account,this.password)
-                if (_data.status===200){
-                    this.$store.state.user = _data.data
+                if (this.newPass !== this.rnewPass) {
+                    Toast('两次密码不一致')
                     this.submitState = false
-                    this.$router.push('/home')
+                    return
+                }
+                let _data = await forget_pass( this.account, this.phone, this.smsCode, this.newPass,this.rnewPass,)
+                if (_data.status === 200) {
+                    Toast('修改成功,请重新登录');
+                    setTimeout(() => {
+                        this.$router.go(-1);
+                    }, 1500)
                 }else {
                     Toast(_data.msg)
                     this.submitState = false
                 }
             },
-            /*
-           * 生成验证码
-           * */
-            randomNum(min, max) {
-                console.log(Math.floor(Math.random() * (max - min) + min))
-                return Math.floor(Math.random() * (max - min) + min)
-            },
-            refreshCode() {
-                this.identifyCode = ''
-                this.makeCode(this.identifyCode, 4)
-            },
-            makeCode(o, l) {
-                for (let i = 0; i < l; i++) {
-                    this.identifyCode += this.identifyCodes[
-                        this.randomNum(0, 33)
-                        ]
+            //  获取验证码
+            async sendCode() {
+                if (!this.phone) {
+                    Toast('请输入手机号')
+                    this.submitState = false
+                    return
                 }
-                console.log(this.identifyCode)
+                if (this.$tools.checkTel(this.phone)) {
+                    Toast('手机号格式错误，请确认')
+                    this.submitState = false
+                    return
+                }
+                if (this.codeText === '获取验证码' || this.codeText === '重新发送') {
+                    this.codeText = 60
+                    this.id = setInterval(() => {
+                        if (this.codeText === 0) {
+                            clearInterval(this.id)
+                            this.codeText = '重新发送'
+                            return
+                        }
+                        if (typeof this.codeText === 'number') {
+                            this.codeText--
+                        }
+                    }, 1000)
+                    let _data = await send_phone_code(this.phone)
+                    if (_data.status !== 200) {
+                        Toast(_data.msg)
+                        this.codeText = '重新发送'
+                        clearInterval(this.id)
+                    }
+                }
             }
         }
     }
@@ -164,7 +200,7 @@
                     margin-left: 12px;
                     font-size: 28px;
                 }
-                .input-container{
+                .input-container {
                     display: flex;
                     flex-grow: 1;
                     border-radius: 4px;
@@ -189,7 +225,7 @@
 
             }
         }
-        .login-submit-btn{
+        .login-submit-btn {
             width: 616px;
             height: 88px;
             line-height: 88px;
@@ -200,7 +236,7 @@
             color: #ffffff;
             margin-top: 46px;
         }
-        .forget{
+        .forget {
             font-size: 28px;
             color: #c51119;
             margin-top: 35px;

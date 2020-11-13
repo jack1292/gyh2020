@@ -4,24 +4,28 @@
                     @confirm="submit" :before-close="onBeforeClose">
             <van-cell-group border class="solid">
                 <van-field
+                        label-width="3.3em"
                         v-model="username"
                         required
                         label="姓名"
                         placeholder="请输入您的姓名"
                 />
                 <van-field
+                        label-width="3.3em"
                         v-model="organize"
                         required
                         label="机构"
                         placeholder="请输入您的机构名称"
                 />
                 <van-field
+                        label-width="3.3em"
                         v-model="phone"
                         required
                         label="电话"
                         placeholder="请输入您的电话"
                 />
                 <van-field
+                        label-width="3.3em"
                         v-model="content"
                         required
                         rows="3"
@@ -105,6 +109,8 @@
 
 <style scoped lang="scss">
     .solid {
+        padding:30px ;
         border-bottom: 1px solid #eeeeee;
     }
+
 </style>

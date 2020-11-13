@@ -706,3 +706,6 @@ input {
     border-right: 1px solid #aaa;
     border-bottom: 1px solid #aaa;
 }
+.van-field__control{
+    font-size: 28px!important;
+}
