@@ -74,7 +74,7 @@
 </template>
 
 <script>
-    //    import {share} from '@/tools/share'
+       import {share} from '@/tools/share'
     import Share from "../Components/Share.vue";
 
     export default {
@@ -127,6 +127,7 @@
             this.srcList = this.project_info.map(item => {
                 return item.img
             })
+            share('北京市社会组织发展服务中心', '欢迎查看北京市社会组织发展服务中心的微店', 'http://shzzpt.org.cn/web/assets/img/jd1.png', window.location.href)
 //            share(this.userinfo.name, '欢迎查看' + this.userinfo.name + '的微店', this.apply_info.logo_url ? this.apply_info.logo_url : this.organization[0].img_url, window.location.href)
         },
         methods: {

@@ -14,10 +14,10 @@
         <span>点击查看</span>
       </div>
     </router-link>
-    <router-link to="/Content/special3" class="special-item">
-      <img src="../../assets/img/special3.jpg" alt="">
+    <router-link to="/Content/special5" class="special-item">
+      <img src="../../assets/img/special5.jpg" alt="">
       <div>
-        <p>社会心理专题</p>
+        <p>防控疫情专题</p>
         <span>点击查看</span>
       </div>
     </router-link>
@@ -28,13 +28,7 @@
         <span>点击查看</span>
       </div>
     </router-link>
-    <router-link to="/Content/special5" class="special-item">
-      <img src="../../assets/img/special5.jpg" alt="">
-      <div>
-        <p>防控疫情专题</p>
-        <span>点击查看</span>
-      </div>
-    </router-link>
+    
     <router-link to="/Content/special6" class="special-item">
       <img src="../../assets/img/special6.jpg" alt="">
       <div>
@@ -53,6 +47,13 @@
       <img src="../../assets/img/special8.jpg" alt="">
       <div>
         <p>科技创新专题</p>
+        <span>点击查看</span>
+      </div>
+    </router-link>
+    <router-link to="/Content/special3" class="special-item">
+      <img src="../../assets/img/special3.jpg" alt="">
+      <div>
+        <p>社会心理专题</p>
         <span>点击查看</span>
       </div>
     </router-link>

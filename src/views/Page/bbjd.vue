@@ -78,7 +78,7 @@
 <script>
     //    import {share} from '@/tools/share'
     import Share from "../Components/Share.vue";
-
+ import {share} from '@/tools/share'
     export default {
         components: {Share},
         name: "bbjd",
@@ -144,6 +144,7 @@
             this.srcList = this.project_info.map(item => {
                 return item.img
             })
+              share('社会组织孵化基地北部基地', '欢迎查看社会组织孵化基地北部基地的微店', 'http://shzzpt.org.cn/web/assets/img/jd3.png', window.location.href)
 //            share(this.userinfo.name, '欢迎查看' + this.userinfo.name + '的微店', this.apply_info.logo_url ? this.apply_info.logo_url : this.organization[0].img_url, window.location.href)
         },
         methods: {

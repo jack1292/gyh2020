@@ -43,7 +43,7 @@
         },
         methods: {
             async getList() {
-                let _data = await getOrgOtherList(1, 10000, this.keyword)
+                let _data = await getOrgOtherList(1, 10000, this.keyword,2)
                 this.list = _data.data.data
             },
             toOrgList() {

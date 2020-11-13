@@ -36,10 +36,11 @@ export const getOrgList = (page, limit, keyword, area, org_type, type) => get('/
 * paranm limit{number}:每页数量
 * paranm keyword{string}:搜索关键字
 * */
-export const getOrgOtherList = (page, limit, keyword) => get('/api/Organization/query_other', {
+export const getOrgOtherList = (page, limit, keyword,type) => get('/api/Organization/query_other', {
   page,
   limit,
-  keyword
+  keyword,
+  type
 })
 
 /*

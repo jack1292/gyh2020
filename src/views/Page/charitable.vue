@@ -1,13 +1,13 @@
 <template>
     <div class="charitable-warpper">
         <div class="charitable-video" v-if="videos.length > 0">
-            <video class="video-content" :src="videos[curIndex].url" controls poster="../../assets/img/cishan.jpg"
+            <video class="video-content" :src="videos[curIndex].url" controls :poster="videos[curIndex].img"
                    v-if="videos[curIndex].url"></video>
             <img class="video-content" src="../../assets/img/cishan.jpg" v-else>
             <div class="charitable-title">{{videos[curIndex].title}}</div>
             <div class="video-preview">
                 <img class="preview-image" :class="{active:curIndex === index}" v-for="(item,index) in videos"
-                     :key="index" src="../../assets/img/cishan.jpg" @click="curIndex = index"/>
+                     :key="index" :src="item.img" @click="curIndex = index"/>
             </div>
         </div>
 
@@ -90,14 +90,17 @@
                 videos: [
                     {
                         title: '2020年首都慈善奖宣传片',
+                        img:'http://shzzpt.org.cn/web/assets/img/csFeng.png',
                         url: 'http://gyhfile.shzzfw.com/%E6%85%88%E5%96%84%E7%BB%BC%E5%90%88%E7%89%8720201027.mp4'
                     },
                     {
                         title: '各区慈善工作亮点巡礼',
+                        img:'http://shzzpt.org.cn/web/assets/img/xuli.jpg',
                         url: 'http://gyhfile.shzzfw.com/16%E5%90%84%E5%8C%BA%E6%85%88%E5%96%84%E5%B7%A5%E4%BD%9C%E4%BA%AE%E7%82%B9%E5%B7%A1%E7%A4%BC.mp4'
                     },
                     {
                         title: '慈善无界 大爱长存',
+                        img:'http://shzzpt.org.cn/web/assets/img/daai.jpg',
                         url: 'http://gyhfile.shzzfw.com/991d9ff405b5fc8f205c7e33c50666517b472d815f001b9073cc428c4543006a51d384d639adf6c66e45a6f398857230d1507630c019d3ab828c4e34321f69be.mp4'
                     }
                 ],

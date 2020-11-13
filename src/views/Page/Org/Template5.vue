@@ -19,7 +19,7 @@
             <div class="org-desc">
                 <p>{{ userinfo.name }} ，
                     {{ userinfo.chengli_time }} 在 {{ userinfo.administration }} 登记成立，
-                    注册资金 {{ userinfo.registered_capital }} 元，
+                  <span v-if="userinfo.registered_capital">注册资金 {{ userinfo.registered_capital }} 元，</span>
                     法定代表人/负责人是 {{ userinfo.legal_person }} 。
                     秘书处位于 {{ apply_info.secretariat_address }} ，
                     现有专职 {{ apply_info.major_num }} 人，
@@ -125,6 +125,7 @@
 
 <script>
     import {getInstitutionInfo} from '@/api'
+     import {share} from '@/tools/share'
     import Share from "../../Components/Share.vue";
     import Message from "../../Components/Message.vue";
 
@@ -255,6 +256,8 @@
                     }
                 }
                 this.swiperOption.loop = this.organization.length >2
+                share(this.userinfo.name, '欢迎查看' + this.userinfo.name + '的微店', this.apply_info.logo_url ? this.apply_info.logo_url : this.organization[0].img_url, window.location.href)
+
             },
             toMienPreview(index) {
                 this.startPosition = index

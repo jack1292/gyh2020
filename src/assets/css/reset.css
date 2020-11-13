@@ -12,14 +12,17 @@ button {
 input {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-.van-image-preview__cover{
+
+.van-image-preview__cover {
     width: 100%;
     color: white;
     top: 100px;
     text-align: center;
 }
 
+
 /*css初始值*/
+
 * {
     box-sizing: border-box;
 }
@@ -29,7 +32,6 @@ body {
     background: #ffffff;
     margin: 0px;
     font-family: "微软雅黑", "宋体", Arial, Helvetica, sans-serif;
-    font-size: 28px;
     line-height: 140%;
     color: #333333;
 }
@@ -62,9 +64,11 @@ td {
     padding: 0;
     list-style-type: none;
 }
+
 video {
     object-fit: fill;
 }
+
 img {
     border: 0;
 }
@@ -134,15 +138,13 @@ textarea,
 select {
     font-size: 14px;
     font-family: 'microsoft yahei', Verdana, Arial, Helvetica, sans-serif;
-
 }
 
 button:focus {
     outline: unset;
 }
 
-bu
-a,
+bu a,
 input,
 textarea {
     text-decoration: none;
@@ -175,7 +177,6 @@ input {
     zoom: 1;
 }
 
-
 .ovHide {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -195,12 +196,14 @@ input {
     -webkit-line-clamp: 3;
     overflow: hidden;
 }
+
 .ovHide4 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
     overflow: hidden;
 }
+
 .ovHide5 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -214,9 +217,11 @@ input {
     position: relative
 }
 
+
 /* ==================
           布局
  ==================== */
+
 
 /*  -- flex弹性布局 -- */
 
@@ -320,7 +325,6 @@ input {
     justify-content: space-around;
 }
 
-
 .margin-0 {
     margin: 0;
 }
@@ -388,9 +392,11 @@ input {
 .margin-bottom-xs {
     margin-bottom: 10px;
 }
+
 .margin-bottom-xsm {
     margin-bottom: 15px;
 }
+
 .margin-bottom-sm {
     margin-bottom: 20px;
 }
@@ -508,9 +514,11 @@ input {
 .padding-top-sm {
     padding-top: 20px;
 }
-.padding-top-0{
+
+.padding-top-0 {
     padding-top: 0;
 }
+
 .padding-top {
     padding-top: 30px;
 }
@@ -632,58 +640,68 @@ input {
     padding-top: 50px;
     padding-bottom: 50px;
 }
-[class*=van-hairline]::after{
+
+[class*=van-hairline]::after {
     display: none;
 }
-.van-step--finish{
+
+.van-step--finish {
     color: rgb(226, 65, 46);
 }
-.specialDetail p{
+
+.specialDetail p {
     line-height: 180% !important;
 }
-.specialDetail a{
+
+.specialDetail a {
     display: block;
-    color:rgb(226, 65, 46);
+    color: rgb(226, 65, 46);
     font-size: 28px;
     line-height: 150%;
 }
-.specialDetail img{
+
+.specialDetail img {
     display: block;
     max-width: 100%;
     margin: 0 auto;
 }
 
-.van-overlay{
+.van-overlay {
     z-index: 999;
 }
 
-.special-detail-html{
+.special-detail-html {
     padding: 0 30px 30px;
 }
-.special-detail-html p{
+
+.special-detail-html p {
     line-height: 56px;
     font-size: 28px;
     text-align: justify;
     text-indent: 56px;
 }
-.special-detail-html p{
+
+.special-detail-html p {
     font-family: "微软雅黑", "宋体", Arial, Helvetica, sans-serif;
 }
-.special-detail-html p font{
+
+.special-detail-html p font {
     font-family: "微软雅黑", "宋体", Arial, Helvetica, sans-serif;
 }
-.special-detail-html img{
+
+.special-detail-html img {
     display: block;
     max-width: 100%;
     margin: 0 auto;
 }
 
-.content-detail table{
+.content-detail table {
     width: 100%;
     border-top: 1px solid #aaa;
     border-left: 1px solid #aaa;
 }
-.content-detail table td{
+
+.content-detail table td {
     text-align: center;
     border-right: 1px solid #aaa;
     border-bottom: 1px solid #aaa;

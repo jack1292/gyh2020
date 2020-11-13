@@ -61,20 +61,20 @@
         <div class="video">
             <h3 class="title">直播厅</h3>
             <div class="video-list">
-                <div class="video-item" @click="showVideo('http://gyhfile.shzzfw.com/20201031%E5%8C%97%E4%BA%AC%E5%85%AC%E7%9B%8A%E6%85%88%E5%96%84%E6%B1%87%E5%B1%95%E5%AE%A3%E4%BC%A0%E7%89%87-1102-2ok.mp4')">
-                    <img src="../../assets/img/video2.png" alt="">
+                <div class="video-item" @click="showVideo('http://gyhfile.shzzfw.com/%E5%8C%97%E4%BA%AC%E5%85%AC%E7%9B%8A%E5%AE%A3%E4%BC%A0%E7%89%87.mp4')">
+                    <img src="http://shzzpt.org.cn/web/assets/img/live4.png" alt="">
                     <p><i class="iconfont iconshipin"></i> 汇展宣传</p>
                 </div>
-                <div class="video-item" @click="showVideo('http://gyhfile.shzzfw.com/20201031%E5%8C%97%E4%BA%AC%E5%85%AC%E7%9B%8A%E6%85%88%E5%96%84%E6%B1%87%E5%B1%95%E5%AE%A3%E4%BC%A0%E7%89%87-1102-2ok.mp4')">
-                    <img src="../../assets/img/video1.png" alt="">
+                <div class="video-item">
+                    <img src="http://shzzpt.org.cn/web/assets/img/live1.png" alt="">
                     <p><i class="iconfont iconkaimushi"></i> 开幕仪式</p>
                 </div>
                 <router-link class="video-item" to="/Home/forum">
-                    <img src="../../assets/img/video3.png" alt="">
+                    <img src="http://shzzpt.org.cn/web/assets/img/live2.jpg" alt="">
                     <p><i class="iconfont iconrenyuan"></i> 前沿论坛</p>
                 </router-link>
                 <router-link class="video-item" to="/Home/project">
-                    <img src="../../assets/img/video4.png" alt="">
+                    <img src="http://shzzpt.org.cn/web/assets/img/live2.png" alt="">
                     <p><i class="iconfont iconhezuo"></i> 项目推介</p>
                 </router-link>
             </div>
@@ -344,6 +344,7 @@
                     img {
                         display: block;
                         width: 315px;
+                        border-radius: 10px;
                     }
 
                     p {

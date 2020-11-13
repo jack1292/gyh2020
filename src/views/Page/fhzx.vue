@@ -115,7 +115,7 @@
 </template>
 
 <script>
-    //    import {share} from '@/tools/share'
+       import {share} from '@/tools/share'
     import Share from "../Components/Share.vue";
 
     export default {
@@ -189,7 +189,7 @@
             }
         },
         created() {
-//            share(this.userinfo.name, '欢迎查看' + this.userinfo.name + '的微店', this.apply_info.logo_url ? this.apply_info.logo_url : this.organization[0].img_url, window.location.href)
+           share('北京市社会组织孵化中心', '欢迎查看北京市社会组织孵化中心的微店', 'http://shzzpt.org.cn/web/assets/img/jd2.png', window.location.href)
         },
         methods: {
             toPreview(list,index){

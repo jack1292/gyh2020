@@ -39,7 +39,7 @@
             <div class="alleviation-title">公益产品</div>
             <div class="alleviation-list">
                 <div class="item-classify" v-for="(item,index) in list" :key="index">
-                    <div class="classify" v-if="item.list.length>0" :style="'background-image: url(/img/q'+ (index+11) +'.jpg);background-size: 100%;'">
+                    <div class="classify" v-if="item.list.length>0" :style="'background-image: url(/m/img/q'+ (index+11) +'.jpg);background-size: 100%;'">
                         <div class="classify-name">{{item.name}}
                         </div>
                         <router-link :to="'goods?id='+item.id" class="classify-more">查看更多</router-link>
