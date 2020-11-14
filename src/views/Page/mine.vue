@@ -85,7 +85,7 @@
         name: "mine",
         data() {
             return {
-                user: this.$store.state.user,
+                user: null,
                 all: 0,
                 video: 0,
                 message: 0,
@@ -94,12 +94,23 @@
             }
         },
         created() {
-            this.init()
+            this.user = this.$store.state.user
+            console
+            if(!this.user || this.user!== 'null' ){
+                this.init()
+            }else{
+                this.$router.push('/Home/login')
+            }
+            
         },
         methods: {
 
             async init() {
                 let _data = await showIntegral(this.$store.state.user.token)
+                if(_data.status === 301){
+                    this.$store.state.user = ''
+                    this.$router.push('/Home/login')
+                }
                 this.all = _data.data.all
                 this.video = _data.data.video
                 this.message = _data.data.message

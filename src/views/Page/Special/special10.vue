@@ -202,6 +202,7 @@ export default {
         margin: 30px;
         font-size: 28px;
         line-height: 44px;
+        text-indent: 56px;
         color: #ffffff;
         text-align: justify;
       }

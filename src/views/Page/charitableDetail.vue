@@ -53,7 +53,7 @@
         }
         .detail-video{
             width: 97%;
-            object-fit: fill;
+            object-fit: contain;
             margin-top: 20px;
         }
         .detail-content{

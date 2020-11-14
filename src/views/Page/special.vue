@@ -50,17 +50,18 @@
         <span>点击查看</span>
       </div>
     </router-link>
-    <router-link to="/Content/special3" class="special-item">
-      <img src="../../assets/img/special3.jpg" alt="">
-      <div>
-        <p>社会心理专题</p>
-        <span>点击查看</span>
-      </div>
-    </router-link>
+   
     <router-link to="/Content/special9" class="special-item">
       <img src="../../assets/img/special9.jpg" alt="">
       <div>
         <p>对外交流交往专题</p>
+        <span>点击查看</span>
+      </div>
+    </router-link>
+     <router-link to="/Content/special3" class="special-item">
+      <img src="../../assets/img/special3.jpg" alt="">
+      <div>
+        <p>社会心理专题</p>
         <span>点击查看</span>
       </div>
     </router-link>

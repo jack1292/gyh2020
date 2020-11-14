@@ -50,7 +50,7 @@ export default {
         video: ''
       }, {
         name: '西藏拉萨馆',
-        video: 'http://gyhfile.shzzfw.com/%E6%96%B0%E7%96%86%E9%A6%86.mp4',
+        video: 'http://gyhfile.shzzfw.com/%E8%A5%BF%E8%97%8F%E6%8B%89%E8%90%A8%E9%A6%86.mp4',
       }, {
         name: '新疆馆',
         video: 'http://gyhfile.shzzfw.com/%E6%96%B0%E7%96%86%E9%A6%86.mp4',

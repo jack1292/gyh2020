@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import {share} from '@/tools/share'
 import headernav from './Components/HeaderNav'
 export default {
   name: 'Home',
@@ -36,6 +37,9 @@ export default {
     return {
       active: 0,
     }
+  },
+  created(){
+    share('2020北京公益慈善汇展', '欢迎观看2020北京公益慈善汇展', 'http://cshadmin.shzzpt.org.cn/defaultLogo/default_logo.png', window.location.href,'')
   }
 }
 </script>

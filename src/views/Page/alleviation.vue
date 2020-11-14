@@ -12,20 +12,20 @@
         </div>
 
         <div class="bank-container">
-            <div class="bank-item">
+            <router-link to="bank?type=1" class="bank-item">
                 <img class="bank-img" src="../../assets/img/sr.png">
                 <div class="bank-content">
                     中国建设银行始终贯彻落实党中央、国务院扶贫要求，以帮助和田地区经济社会发展和贫困群众脱贫为己任。
                 </div>
-                <router-link to="bank?type=1" class="bank-more">查看更多</router-link>
-            </div>
-            <div class="bank-item">
+                <div  class="bank-more">查看更多</div>
+            </router-link>
+            <router-link to="bank?type=2" class="bank-item">
                 <img class="bank-img" src="../../assets/img/dp.png">
                 <div class="bank-content">
                     德朴农业将在重庆市扶贫办，重庆市人民政府驻北京办事处，北京重庆企业商会等有关领导的指导和支持下，社会各界爱心扶贫志愿者的共同参与和帮助下
                 </div>
-                <router-link to="bank?type=2" class="bank-more">查看更多</router-link>
-            </div>
+                <div class="bank-more">查看更多</div>
+            </router-link>
         </div>
 
         <div class="area-list">
