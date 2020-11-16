@@ -61,7 +61,7 @@
         <router-link to="csf" class="img-link">
             <img src="../../assets/img/a2.png" alt="">
         </router-link>
-        <a href="http://www.bca.org.cn/web/article/402881225914c395015914c4e7f00000/ff80808172d5662e01740eda58170520/0/index.html#p=1"
+        <a href="http://www.bca.org.cn/web/article/402881225914c395015914c4e7f00000/402881225914c395015914f441180029/0/index.html"
            target="_blank" class="img-link active">
             <img src="../../assets/img/a1.png" alt="">
         </a>

@@ -1,6 +1,6 @@
 <template>
   <div class="warpper-index">
-    <img src="../../assets/img/banner.png" alt="" class="banner" />
+    <img src="../../assets/img/banner.jpg" alt="" class="banner" />
     <div class="nav">
       <router-link to="/Home/special" class="nav-item">
         <img src="../../assets/img/nav1.png" alt="" />
@@ -21,22 +21,24 @@
     </div>
     <div class="schedule">
       <h3 class="title">日程安排</h3>
-      <div style="overflow-x: scroll">
+      <div style="overflow-x: scroll;height: 240px;">
         <div class="schedule-list bx-content">
           <div
-            class="schedule-item  schedule-item1"
+            class="schedule-item schedule-item1"
             :class="{ active: width >= 10 }"
           >
             <p>11月15日</p>
             <p class="active">微店展示</p>
           </div>
           <div
-            class="schedule-item bottom  schedule-item2"
+            class="schedule-item bottom schedule-item2"
             :class="{ active: width >= 20 }"
           >
             <p>11月16日</p>
             <p class="active">开幕式</p>
-            <p class="active" @click="toLuntan(1)">前沿论坛</p>
+            <p class="active luntan" @click="toLuntan(1)">
+              以党建引领社会组织<br />参与社会治理
+            </p>
             <p class="active"><a href="javascript:void 0">项目推介</a></p>
           </div>
           <div
@@ -44,7 +46,9 @@
             :class="{ active: width >= 30 }"
           >
             <p>11月17日</p>
-            <p class="active" @click="toLuntan(2)">前沿论坛</p>
+            <p class="active luntan" @click="toLuntan(2)">
+              公益组织参与社会治理<br />的路径解读
+            </p>
             <p class="active"><a href="javascript:void 0">项目推介</a></p>
           </div>
           <div
@@ -52,31 +56,45 @@
             :class="{ active: width >= 37 }"
           >
             <p>11月18日</p>
-            <p class="active" @click="toLuntan(3)">前沿论坛</p>
-            <p class="active"><a href="javascript:void 0">项目推介</a></p>
+            <p class="active luntan" @click="toLuntan(3)">
+              疫情防控常态化下社会组织<br />如何转型升级
+            </p>
+            <p class="active">
+              <a href="javascript:void 0">基金会优秀项目在线推介</a>
+            </p>
           </div>
           <div
             class="schedule-item schedule-item5"
             :class="{ active: width >= 45 }"
           >
             <p>11月19日</p>
-            <p class="active"  @click="toLuntan(4)">前沿论坛</p>
-            <p class="active"><a href="javascript:void 0">项目推介</a></p>
+            <p class="active luntan" @click="toLuntan(4)">
+              解析回天治理<br />的社会维度
+            </p>
+            <p class="active">
+              <a href="javascript:void 0">社团优秀项目在线推介</a>
+            </p>
           </div>
           <div
             class="schedule-item bottom schedule-item6"
             :class="{ active: width >= 53 }"
           >
             <p>11月20日</p>
-            <p class="active" @click="toLuntan(5)">前沿论坛</p>
-            <p class="active"><a href="javascript:void 0">项目推介</a></p>
+            <p class="active luntan" @click="toLuntan(5)">
+              诚信建设推动社会组织行业<br />健康发展
+            </p>
+            <p class="active">
+              <a href="javascript:void 0">民非优秀项目在线推介</a>
+            </p>
           </div>
           <div
             class="schedule-item schedule-item7"
             :class="{ active: width >= 60 }"
           >
             <p>11月21日</p>
-            <p class="active" @click="toLuntan(6)">前沿论坛</p>
+            <p class="active luntan" @click="toLuntan(6)">
+              北京垃圾分类的大家谈
+            </p>
             <p class="active"><a href="javascript:void 0">项目推介</a></p>
           </div>
           <div
@@ -84,7 +102,9 @@
             :class="{ active: width >= 69 }"
           >
             <p>11月22日</p>
-            <p class="active" @click="toLuntan(7)">前沿论坛</p>
+            <p class="active luntan" @click="toLuntan(7)">
+              脱贫攻坚与乡村振兴视角下的<br />社会组织如何发挥作用
+            </p>
             <p class="active"><a href="javascript:void 0">项目推介</a></p>
           </div>
           <div
@@ -92,24 +112,34 @@
             :class="{ active: width >= 77 }"
           >
             <p>11月23日</p>
-            <p class="active" @click="toLuntan(8)">前沿论坛</p>
-            <p class="active"><a href="javascript:void 0">项目推介</a></p>
+            <p class="active luntan" @click="toLuntan(8)">
+              社会组织志愿服务参与的<br />路径与挑战
+            </p>
+            <p class="active">
+              <a href="javascript:void 0">社团优秀项目在线推介</a>
+            </p>
           </div>
           <div
             class="schedule-item bottom schedule-item10"
             :class="{ active: width >= 85 }"
           >
             <p>11月24日</p>
-            <p class="active" @click="toLuntan(9)">前沿论坛</p>
-            <p class="active"><a href="javascript:void 0">项目推介</a></p>
+            <p class="active luntan" @click="toLuntan(9)">勤俭节约 光盘行动</p>
+            <p class="active">
+              <a href="javascript:void 0">民非优秀项目在线推介</a>
+            </p>
           </div>
           <div
             class="schedule-item schedule-item11"
             :class="{ active: width >= 100 }"
           >
             <p>11月25日</p>
-            <p class="active" @click="toLuntan(10)">前沿论坛</p>
-            <p class="active"><a href="javascript:void 0">项目推介</a></p>
+            <p class="active luntan" @click="toLuntan(10)">
+              社区养老、居家养老
+            </p>
+            <p class="active">
+              <a href="javascript:void 0">基金会优秀项目在线推介</a>
+            </p>
           </div>
           <div class="jindu" :style="'width:' + width + '%'"></div>
         </div>
@@ -122,19 +152,19 @@
           class="video-item"
           @click="
             showVideo(
-              'http://gyhfile.shzzfw.com/%E5%8C%97%E4%BA%AC%E5%85%AC%E7%9B%8A%E5%AE%A3%E4%BC%A0%E7%89%87.mp4'
+              'http://gyhfile.shzzfw.com/%E5%8C%97%E4%BA%AC%E5%85%AC%E7%9B%8A%E6%85%88%E5%96%84%E6%B1%87%E5%B1%95%E5%AE%A3%E4%BC%A0%E7%89%871113ok.mp4'
             )
           "
         >
           <img src="http://shzzpt.org.cn/web/assets/img/live4.png" alt="" />
           <p><i class="iconfont iconshipin"></i> 汇展宣传</p>
         </div>
-        <div class="video-item">
+        <a href="http://live.3style.org.cn//mlive?id=433#/" class="video-item">
           <img src="http://shzzpt.org.cn/web/assets/img/live1.png" alt="" />
           <p><i class="iconfont iconkaimushi"></i> 开幕仪式</p>
-        </div>
+        </a>
         <router-link class="video-item" to="/Home/forum">
-          <img src="http://shzzpt.org.cn/web/assets/img/live2.jpg" alt="" />
+          <img src="http://shzzpt.org.cn/web/assets/img/live3.png" alt="" />
           <p><i class="iconfont iconrenyuan"></i> 前沿论坛</p>
         </router-link>
         <router-link class="video-item" to="/Home/project">
@@ -184,15 +214,17 @@ export default {
       let _data9 = (new Date('2020-11-23 00:00:00')).getTime();
       let _data10 = (new Date('2020-11-24 00:00:00')).getTime();
       let _data11 = (new Date('2020-11-25 00:00:00')).getTime();
-      let _time = _data.data * 1000
+      // let _time = _data.data * 1000
+      console.log(_data)
+      let _time = 1605590317 * 1000
       if (_time > _data1) {
         this.width = 10
       }
       if (_time > _data2) {
-        this.width = 20
+        this.width = 19
       }
       if (_time > _data3) {
-        this.width = 30
+        this.width = 28
       }
       if (_time > _data4) {
         this.width = 37
@@ -228,9 +260,9 @@ export default {
       this.videos = '';
       this.show = false
     },
-    toLuntan(num){
-        let arr =[0,20,17,13,12,14,15,19,16,21,18]
-        this.$router.push('/Home/forumDetail?id=' +arr[num] )
+    toLuntan (num) {
+      let arr = [0, 20, 17, 13, 12, 14, 15, 19, 16, 21, 18]
+      this.$router.push('/Home/forumDetail?id=' + arr[num])
     }
   }
 }
@@ -304,11 +336,12 @@ export default {
     }
 
     .schedule-list {
-      width: 1250px;
-      height: 400px;
+      width: 2400px;
+      height: 450px;
       padding-bottom: 40px;
       border-radius: 20px;
       position: relative;
+      top: 30px;
 
       &:before {
         position: absolute;
@@ -322,60 +355,62 @@ export default {
 
       .schedule-item {
         position: absolute;
-        width: 220px;
-        height: 135px;
+    
+        width: 350px;
+        height: 160px;
+        z-index: 1;
 
         &.schedule-item1 {
-          top: 0;
+          top: -26px;
           left: 0;
         }
 
         &.schedule-item2 {
           top: 195px;
-          left: 100px;
+          left: 200px;
         }
 
         &.schedule-item3 {
-          top: 0;
-          left: 200px;
+          top: -26px;
+          left: 400px;
         }
 
         &.schedule-item4 {
           top: 195px;
-          left: 300px;
+          left: 600px;
         }
 
         &.schedule-item5 {
-          top: 0;
-          left: 400px;
+          top: -26px;
+          left: 800px;
         }
 
         &.schedule-item6 {
           top: 195px;
-          left: 500px;
+          left: 1000px;
         }
 
         &.schedule-item7 {
-          top: 0;
-          left: 600px;
+          top: -26px;
+          left: 1200px;
         }
         &.schedule-item8 {
           top: 195px;
-          left: 700px;
+          left: 1400px;
         }
 
         &.schedule-item9 {
-          top: 0;
-          left: 800px;
+          top: -26px;
+          left: 1600px;
         }
         &.schedule-item10 {
           top: 195px;
-          left: 900px;
+          left: 1800px;
         }
 
         &.schedule-item11 {
-          top: 0;
-          left: 1000px;
+          top: -26px;
+          left: 2000px;
         }
 
         &:after {
@@ -403,25 +438,36 @@ export default {
         }
 
         p {
-          height: 45px;
-          line-height: 45px;
+          height: 40px;
+          line-height: 40px;
           font-size: 20px;
           color: #e2412e;
           text-align: center;
-
+          
           &.active {
+            line-height: 40px;
+            font-size: 20px;
+            color: #e2412e;
+            text-align: center;
+            &.luntan {
+              display: flex;
+              align-items: center;
+              justify-content: space-around;
+              height: 70px;
+              padding: 10px 0;
+              background: rgba(250, 240, 230, 0.5);
+              border-radius: 10px;
+              margin-bottom: 5px;
+              line-height: 30px;
+            }
+          }
+          a {
+            display: block;
+            height: 45px;
             line-height: 45px;
             font-size: 20px;
             color: #e2412e;
             text-align: center;
-          }
-          a{
-              display: block;
-              height: 45px;
-          line-height: 45px;
-          font-size: 20px;
-         color: #e2412e;
-          text-align: center;
           }
         }
       }
