@@ -23,7 +23,8 @@
             <div class="video-img">
                 <div v-for="(item,index) in list" :key="index" @click="selectVideo(index)">
                     <img :src="item.thumb" alt="">
-                    <img src="../../assets/img/ltAct.png" alt="" class="is-play" v-if="index === chiose">
+                    <img src="../../assets/img/ltAct.png" alt="" class="is-play" v-if="index === chiose && list[chiose].current !== 0">
+                    <img src="../../assets/img/ltAct2.png" alt="" class="is-play" v-if="index === chiose && list[chiose].current === 0">
                 </div>
             </div>
         </div>

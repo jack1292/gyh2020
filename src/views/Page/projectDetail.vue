@@ -134,7 +134,7 @@
       <ul class="detail-info-list">
         <li>
           <span><i class="iconfont icontongji"></i>所需资源：</span>
-          <p>{{ yusuan }} / 万元</p>
+          <p>{{ yusuan }} 万/年</p>
         </li>
         <li>
           <span><i class="iconfont iconjifen"></i>以往资金来源：</span>

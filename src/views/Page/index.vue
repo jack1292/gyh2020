@@ -24,26 +24,25 @@
       <div style="overflow-x: scroll;height: 240px;">
         <div class="schedule-list bx-content">
           <div
-            class="schedule-item schedule-item1"
-            :class="{ active: width >= 10 }"
+            class="schedule-item active schedule-item1"
+            
           >
             <p>11月15日</p>
             <p class="active">微店展示</p>
           </div>
           <div
-            class="schedule-item bottom schedule-item2"
-            :class="{ active: width >= 20 }"
+            class="schedule-item bottom active schedule-item2"
           >
             <p>11月16日</p>
             <p class="active">开幕式</p>
             <p class="active luntan" @click="toLuntan(1)">
               以党建引领社会组织<br />参与社会治理
             </p>
-            <p class="active"><a href="javascript:void 0">项目推介</a></p>
+            <p class="active"><a href="https://mp.weixin.qq.com/s/XSG0e6IL9oi3C-ARIZ4qMA" target="_bank">项目推介</a></p>
           </div>
           <div
             class="schedule-item schedule-item3"
-            :class="{ active: width >= 30 }"
+            :class="{ active: width >= 28 }"
           >
             <p>11月17日</p>
             <p class="active luntan" @click="toLuntan(2)">
@@ -159,10 +158,17 @@
           <img src="http://shzzpt.org.cn/web/assets/img/live4.png" alt="" />
           <p><i class="iconfont iconshipin"></i> 汇展宣传</p>
         </div>
-        <a href="http://live.3style.org.cn//mlive?id=433#/" class="video-item">
+        <div
+          class="video-item"
+          @click="
+            showVideo(
+              'http://open-carguide.oss-cn-beijing.aliyuncs.com/record/live/20201115_433/2020-11-16-09-59-59_2020-11-16-10-59-59.mp4'
+            )
+          "
+        >
           <img src="http://shzzpt.org.cn/web/assets/img/live1.png" alt="" />
           <p><i class="iconfont iconkaimushi"></i> 开幕仪式</p>
-        </a>
+        </div>
         <router-link class="video-item" to="/Home/forum">
           <img src="http://shzzpt.org.cn/web/assets/img/live3.png" alt="" />
           <p><i class="iconfont iconrenyuan"></i> 前沿论坛</p>
@@ -194,8 +200,9 @@ export default {
     return {
       width: 0,
       videos: '',
-      show: false
-    }
+      show: false,
+      timer:''
+          }
   },
   created () {
     this.init()
@@ -203,20 +210,20 @@ export default {
   methods: {
     async init () {
       let _data = await getTime()
-      let _data1 = (new Date('2020-11-15 00:00:00')).getTime();
-      let _data2 = (new Date('2020-11-16 00:00:00')).getTime();
-      let _data3 = (new Date('2020-11-17 00:00:00')).getTime();
-      let _data4 = (new Date('2020-11-18 00:00:00')).getTime();
-      let _data5 = (new Date('2020-11-19 00:00:00')).getTime();
-      let _data6 = (new Date('2020-11-20 00:00:00')).getTime();
-      let _data7 = (new Date('2020-11-21 00:00:00')).getTime();
-      let _data8 = (new Date('2020-11-22 00:00:00')).getTime();
-      let _data9 = (new Date('2020-11-23 00:00:00')).getTime();
-      let _data10 = (new Date('2020-11-24 00:00:00')).getTime();
-      let _data11 = (new Date('2020-11-25 00:00:00')).getTime();
-      // let _time = _data.data * 1000
-      console.log(_data)
-      let _time = 1605590317 * 1000
+      let _data1 = (new Date('2020/11/15 00:00:00')).getTime();
+      let _data2 = (new Date('2020/11/16 00:00:00')).getTime();
+      let _data3 = (new Date('2020/11/17 00:00:00')).getTime();
+      let _data4 = (new Date('2020/11/18 00:00:00')).getTime();
+      let _data5 = (new Date('2020/11/19 00:00:00')).getTime();
+      let _data6 = (new Date('2020/11/20 00:00:00')).getTime();
+      let _data7 = (new Date('2020/11/21 00:00:00')).getTime();
+      let _data8 = (new Date('2020/11/22 00:00:00')).getTime();
+      let _data9 = (new Date('2020/11/23 00:00:00')).getTime();
+      let _data10 = (new Date('2020/11/24 00:00:00')).getTime();
+      let _data11 = (new Date('2020/11/25 00:00:00')).getTime();
+      let _time = _data.data * 1000
+    
+      // let _time = 1605590317 * 1000
       if (_time > _data1) {
         this.width = 10
       }
